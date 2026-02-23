@@ -13,7 +13,7 @@ export default function ContactMeIcon(props: ClientProjectsProps) {
 			new WindowMetaData({
 				name: "contact-me",
 				title: "Contact Me",
-				iconUrl: `${envs.NEXT_PUBLIC_BASE_PATH}//app-icons/fax.png`,
+				iconUrl: `${envs.NEXT_PUBLIC_BASE_PATH}/app-icons/fax.png`,
 				component: <ContactMeContent />,
 				initialWindowHeight: "small",
 				initialWindowWidth: "small",
