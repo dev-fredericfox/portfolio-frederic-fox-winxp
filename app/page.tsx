@@ -20,7 +20,9 @@ export default function Home() {
 						<p className={cn(libreFranklin.className, "text-white text-5xl md:text-6xl font-bold italic drop-shadow-sm/30")}>
 							Windows <span className="align-super text-2xl text-orange-400 drop-shadow-sm/30">XP</span>
 						</p>
-						<p className={cn(libreFranklin.className, "text-white text-sm md:text-lg font-bold mt-5 lg:mt-10")}>To begin exploring my portfolio, click your username</p>
+						<p className={cn(libreFranklin.className, "text-white text-sm md:text-lg font-bold mt-5 lg:mt-10")}>
+							To begin exploring my portfolio, click your username
+						</p>
 					</div>
 					<span className="h-0.5 w-full lg:h-full lg:w-0.5 mx-auto bg-linear-to-r lg:bg-linear-to-b via-white" />
 					<div className="flex items-center justify-center md:justify-start md:pr-10">
@@ -29,7 +31,7 @@ export default function Home() {
 							<div className="flex md:flex-row items-top h-34 w-full bg-linear-to-r from-blue-800 via-blue-700 to-transparent rounded-bl-md rounded-tl-md p-4">
 								<Avatar className="rounded-lg border-3 border-amber-400">
 									<Link href="/portfolio">
-										<AvatarImage className="h-25 w-25" src="/me-square-DO-NOT-GO-LIVE.jpeg" alt="User Avatar" />
+										<AvatarImage className="h-25 w-25" src="/glazed/me-square-glaze-protected-intensity-HIGH-V2.jpeg" alt="User Avatar" />
 										<AvatarFallback className="h-10 w-10 rounded-full bg-gray-200 text-gray-600 flex items-center justify-center">UF</AvatarFallback>
 									</Link>
 								</Avatar>
@@ -52,7 +54,9 @@ export default function Home() {
 						<span className="absolute border-2 rounded-lg w-9 h-9 shadow-lg" />
 						<MinusCircleIcon className={cn("h-6 w-6 text-white rotate-90 ml-1.5 mt-1.5")} />
 					</div>
-					<p className="text-white text-xl font-bold ml-4 cursor-pointer mt-1">Turn Off Computer</p>
+					<a href="https://www.google.com" className="text-white text-xl font-bold ml-4 cursor-pointer mt-1">
+						Turn Off Computer
+					</a>
 				</div>
 			</div>
 		</main>
