@@ -1,8 +1,9 @@
 "use client";
 import { DesktopIcon } from "@/components/atoms/DesktopIcon";
+import { envs } from "@/lib/envs";
 
 export default function LegacyCVIcon() {
-	const imageUrl = "/app-icons/internet_explorer.png";
+	const imageUrl = `${envs.NEXT_PUBLIC_BASE_PATH}/app-icons/internet_explorer.png`;
 	const imageAlt = "Legacy CV Icon";
 	const imageTitle = "Legacy CV";
 	const label = "Legacy Website";

@@ -14,6 +14,7 @@ import WebampIcon from "../apps/webamp/WebampIcon";
 import Link from "next/link";
 import RunIcon from "../apps/Run/RunIcon";
 import ImprintIcon from "../apps/Imprint/ImprintIcon";
+import { envs } from "@/lib/envs";
 
 export default function Taskbar() {
 	const [popoverOpen, setPopoverOpen] = useState(false);
@@ -72,7 +73,7 @@ export default function Taskbar() {
 					)}>
 					<PopoverDescription>
 						<Avatar className="rounded-lg border-3 border-amber-400 h-16 w-16">
-							<AvatarImage src="/glazed/me-square-glaze-protected-intensity-HIGH-V2.jpeg" alt="User Avatar" />
+							<AvatarImage src={`${envs.NEXT_PUBLIC_BASE_PATH}/glazed/me-square-glaze-protected-intensity-HIGH-V2.jpeg`} alt="User Avatar" />
 							<AvatarFallback className="h-16 w-16 rounded-full bg-gray-200 text-gray-600 flex items-center justify-center">UF</AvatarFallback>
 						</Avatar>
 					</PopoverDescription>

@@ -32,7 +32,11 @@ export default function Home() {
 							<div className="flex md:flex-row items-top h-34 w-full bg-linear-to-r from-blue-800 via-blue-700 to-transparent rounded-bl-md rounded-tl-md p-4">
 								<Avatar className="rounded-lg border-3 border-amber-400">
 									<Link href="/portfolio">
-										<AvatarImage className="h-25 w-25" src="/glazed/me-square-glaze-protected-intensity-HIGH-V2.jpeg" alt="User Avatar" />
+										<AvatarImage
+											className="h-25 w-25"
+											src={`${envs.NEXT_PUBLIC_BASE_PATH}/glazed/me-square-glaze-protected-intensity-HIGH-V2.jpeg`}
+											alt="User Avatar"
+										/>
 										<AvatarFallback className="h-10 w-10 rounded-full bg-gray-200 text-gray-600 flex items-center justify-center">UF</AvatarFallback>
 									</Link>
 								</Avatar>
