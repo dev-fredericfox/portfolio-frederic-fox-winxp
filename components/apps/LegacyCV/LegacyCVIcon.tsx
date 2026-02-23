@@ -12,7 +12,7 @@ export default function LegacyCVIcon() {
 			<div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 12 }}>
 				<DesktopIcon
 					onOpen={() => {
-						window.open("https://www.frederic-fox.com", "_blank");
+						window.open("https://legacy-space.frederic-fox.com", "_blank");
 					}}
 					id="legacy-cv"
 					windowMetaData={null}
