@@ -13,6 +13,8 @@ type WindowManagerContextType = {
 	findById: (id: string) => WindowMetaData | null;
 	selectedIconId: string | null;
 	setSelectedIconId: (id: string | null) => void;
+	selectedIcon: WindowMetaData | null;
+	setSelectedIcon: (icon: WindowMetaData | null) => void;
 	getZIndex: (window: WindowMetaData) => number;
 	updateZIndex: (window: WindowMetaData) => void;
 	resetZIndex: (window: WindowMetaData) => void;
@@ -20,11 +22,17 @@ type WindowManagerContextType = {
 	getFocusedWindow: () => WindowMetaData | null;
 };
 
+/**
+ * The entire timestamp is too long for CSS, so we slice it to get the last 6 digits. This should be sufficient for our use case, as it will still provide a unique and incrementing z-index for windows opened within a reasonable timeframe.
+ */
+const Z_INDEX_LENGTH = 6;
+
 const WindowManagerContext = createContext<WindowManagerContextType | null>(null);
 
 const WindowManagerProvider = ({ children }: WindowManagerProviderProps) => {
 	const [openWindows, _setOpenWindows] = useState<WindowMetaData[]>([]);
 	const [selectedIconId, _setSelectedIconId] = useState<string | null>(null);
+	const [selectedIcon, _setSelectedIcon] = useState<WindowMetaData | null>(null);
 	const [windowZIndices, setWindowZIndices] = useState<{ [key: string]: number }>({});
 	function setOpenWindows(windows: WindowMetaData[]) {
 		_setOpenWindows(windows);
@@ -56,7 +64,7 @@ const WindowManagerProvider = ({ children }: WindowManagerProviderProps) => {
 
 	function getZIndex(window: WindowMetaData) {
 		const num = windowZIndices[window.id];
-		const shortZIndex = Number(String(num).slice(-6));
+		const shortZIndex = Number(String(num).slice(-Z_INDEX_LENGTH));
 		return shortZIndex;
 	}
 
@@ -76,6 +84,10 @@ const WindowManagerProvider = ({ children }: WindowManagerProviderProps) => {
 
 	function setSelectedIconId(id: string | null) {
 		_setSelectedIconId(id);
+	}
+
+	function setSelectedIcon(icon: WindowMetaData | null) {
+		_setSelectedIcon(icon);
 	}
 
 	function getFocusedWindow() {
@@ -102,6 +114,8 @@ const WindowManagerProvider = ({ children }: WindowManagerProviderProps) => {
 				findById,
 				selectedIconId,
 				setSelectedIconId,
+				selectedIcon,
+				setSelectedIcon,
 				getZIndex,
 				updateZIndex,
 				resetZIndex,

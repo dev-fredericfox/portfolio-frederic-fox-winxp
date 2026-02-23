@@ -5,7 +5,7 @@ import { WindowMetaData } from "@/lib/WindowMetaData";
 import { KrakenkindContent } from "./KrakenkindContent";
 
 export default function KrakenkindIcon() {
-	const { addWindow, selectedIconId, setSelectedIconId } = useWindowManager();
+	const { addWindow } = useWindowManager();
 	const [, setIsOpen] = useState(false);
 	const windowMetaData = new WindowMetaData({
 		name: "krakenkind",
@@ -26,8 +26,7 @@ export default function KrakenkindIcon() {
 				<DesktopIcon
 					onOpen={open}
 					id={windowMetaData.name}
-					selectedId={selectedIconId}
-					setSelectedId={setSelectedIconId}
+					windowMetaData={windowMetaData}
 					label={windowMetaData.title}
 					imageAlt={`${windowMetaData.title} Icon`}
 					imageTitle={windowMetaData.title}

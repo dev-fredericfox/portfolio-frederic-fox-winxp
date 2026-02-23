@@ -2,11 +2,12 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { signika } from "@/app/layout";
 import Image from "next/image";
+import { WindowMetaData } from "@/lib/WindowMetaData";
+import { useWindowManager } from "../context-providers/WindowManagerProvider";
 
 type DesktopIconProps = {
 	id: string;
-	selectedId: string | null;
-	setSelectedId: (id: string | null) => void;
+	windowMetaData: WindowMetaData | null;
 	onOpen: () => void;
 	label: string;
 	imageUrl?: string;
@@ -15,9 +16,9 @@ type DesktopIconProps = {
 	imageTitle?: string;
 };
 
-export function DesktopIcon({ id, selectedId, setSelectedId, onOpen, label, imageUrl, iconsComponent, imageAlt, imageTitle }: DesktopIconProps) {
-	const isSelected = selectedId === id;
-
+export function DesktopIcon({ id, windowMetaData, onOpen, label, imageUrl, iconsComponent, imageAlt, imageTitle }: DesktopIconProps) {
+	const { selectedIconId, setSelectedIconId, setSelectedIcon } = useWindowManager();
+	const isSelected = selectedIconId === id;
 	return (
 		<Button
 			variant="technical"
@@ -25,20 +26,26 @@ export function DesktopIcon({ id, selectedId, setSelectedId, onOpen, label, imag
 			type="button"
 			onClick={(e) => {
 				e.stopPropagation();
-				setSelectedId(id);
+				setSelectedIconId(id);
+				setSelectedIcon(windowMetaData);
 			}}
 			onDoubleClick={(e) => {
 				e.stopPropagation();
-				setSelectedId(null);
+				setSelectedIconId(null);
+				setSelectedIcon(windowMetaData);
 				onOpen();
 			}}
 			onTouchEnd={(e) => {
 				e.stopPropagation();
-				setSelectedId(null);
+				setSelectedIconId(null);
+				setSelectedIcon(null);
 				onOpen();
 			}}
 			onKeyDown={(e) => {
-				if (e.key === "Enter") onOpen();
+				if (e.key === "Enter") {
+					setSelectedIcon(windowMetaData);
+					onOpen();
+				}
 			}}
 			aria-selected={isSelected}
 			data-selected={isSelected ? "true" : "false"}

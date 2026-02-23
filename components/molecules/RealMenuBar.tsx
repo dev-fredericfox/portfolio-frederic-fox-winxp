@@ -65,23 +65,31 @@ export default function RealMenuBar({ items = defaultItems, onSave, onSaveAs, pr
 							</DropdownMenuGroup>
 						</DropdownMenuContent>
 					</DropdownMenu>
-					<DialogContent>
-						<DialogHeader>
-							<DialogTitle>File Name</DialogTitle>
-							<DialogDescription>
-								<Input
-									type="text"
-									className="border border-gray-400 rounded px-2 py-1 w-full"
-									placeholder="Enter new file name"
-									value={newFileName}
-									onChange={(e) => setNewFileName(e.target.value)}
-								/>
-								<div className="mt-4 flex justify-end gap-2">
-									<Button onClick={() => setIsSaveAsDialogOpen(false)}>Cancel</Button>
-									<Button onClick={saveAsHandler}>Save</Button>
-								</div>
-							</DialogDescription>
+					<DialogContent
+						showCloseButton={false}
+						className="m-0 p-0 border-0 rounded-b-none [box-shadow:inset_-1px_-1px_#00138c,inset_1px_1px_#0831d9,inset_-2px_-2px_#001ea0,inset_2px_1px_#166aee,inset_-3px_-2px_#003bda,inset_3px_4px_#0855dd] rounded-tl-lg rounded-tr-lg pl-px pr-px pt-px pb-px antialiased shadow-[inset_-1px_-1px_#0a0a0a,inset_1px_1px_#dfdfdf,var(--border-window-inner)] border-t-[1px_solid_#0831d9] border-l-[1px_solid_#0831d9] border-r-[1px_solid_#001ea0] text-[13px] w-full max-h-[calc(100vh-40px)]">
+						<DialogHeader className="font-['Trebuchet_MS'] bg-[linear-gradient(180deg,rgba(9,151,255,1)_0%,rgba(0,83,238,1)_8%,rgba(0,80,238,1)_40%,rgba(0,102,255,1)_88%,rgba(0,102,255,1)_93%,rgba(0,91,255,1)_95%,rgba(0,61,215,1)_96%,rgba(0,61,215,1)_100%)] rounded-tl-lg rounded-tr-lg text-[13px] h-7 w-full px-2">
+							<DialogTitle className="text-white font-bold text-sm [text-shadow:1px_1px_#0f1089] mt-1 select-none">Save as</DialogTitle>
 						</DialogHeader>
+
+						<DialogDescription className="p-2 pl-6">
+							<DialogTitle className="font-['Trebuchet_MS'] mb-2 select-none">File Name</DialogTitle>
+							<Input
+								type="text"
+								className="border border-gray-400 rounded px-2 py-1 w-full"
+								placeholder="Enter new file name"
+								value={newFileName}
+								onChange={(e) => setNewFileName(e.target.value)}
+							/>
+							<span className="mt-4 flex justify-end gap-2">
+								<Button onClick={() => setIsSaveAsDialogOpen(false)} size="sm" variant="system">
+									Cancel
+								</Button>
+								<Button onClick={saveAsHandler} size="sm" variant="system">
+									Save
+								</Button>
+							</span>
+						</DialogDescription>
 					</DialogContent>
 				</Dialog>
 

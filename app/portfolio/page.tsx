@@ -1,3 +1,4 @@
+"use client";
 import { WindowManagerProvider } from "@/components/context-providers/WindowManagerProvider";
 import Desktop from "@/components/window/Desktop";
 

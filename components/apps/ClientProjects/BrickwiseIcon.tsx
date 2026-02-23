@@ -6,7 +6,7 @@ import { WindowMetaData } from "@/lib/WindowMetaData";
 import { BrickwiseContent } from "./BrickwiseContent";
 
 export default function BrickwiseIcon() {
-	const { addWindow, selectedIconId, setSelectedIconId } = useWindowManager();
+	const { addWindow } = useWindowManager();
 	const [, setIsOpen] = useState(false);
 	const windowMetaData = new WindowMetaData({
 		name: "brickwise",
@@ -28,8 +28,7 @@ export default function BrickwiseIcon() {
 				<DesktopIcon
 					onOpen={open}
 					id={windowMetaData.name}
-					selectedId={selectedIconId}
-					setSelectedId={setSelectedIconId}
+					windowMetaData={windowMetaData}
 					label={windowMetaData.title}
 					imageAlt={`${windowMetaData.title} Icon`}
 					imageTitle={windowMetaData.title}

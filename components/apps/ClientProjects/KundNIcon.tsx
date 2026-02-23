@@ -5,7 +5,7 @@ import { WindowMetaData } from "@/lib/WindowMetaData";
 import { KundNContent } from "./KundNContent";
 
 export default function KundNIcon() {
-	const { addWindow, selectedIconId, setSelectedIconId } = useWindowManager();
+	const { addWindow } = useWindowManager();
 	const [, setIsOpen] = useState(false);
 	const windowMetaData = new WindowMetaData({
 		name: "KundN",
@@ -26,8 +26,7 @@ export default function KundNIcon() {
 				<DesktopIcon
 					onOpen={open}
 					id={windowMetaData.name}
-					selectedId={selectedIconId}
-					setSelectedId={setSelectedIconId}
+					windowMetaData={windowMetaData}
 					label={windowMetaData.title}
 					imageUrl={windowMetaData?.iconUrl ?? ""}
 					imageAlt={`${windowMetaData.title} Icon`}

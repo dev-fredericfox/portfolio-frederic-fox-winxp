@@ -1,12 +1,7 @@
 "use client";
 import { DesktopIcon } from "@/components/atoms/DesktopIcon";
 
-type ClientProjectsProps = {
-	selectedId: string | null;
-	setSelectedId: (id: string | null) => void;
-};
-
-export default function LegacyCVIcon({ selectedId, setSelectedId }: ClientProjectsProps) {
+export default function LegacyCVIcon() {
 	const imageUrl = "/app-icons/internet_explorer.png";
 	const imageAlt = "Legacy CV Icon";
 	const imageTitle = "Legacy CV";
@@ -19,8 +14,7 @@ export default function LegacyCVIcon({ selectedId, setSelectedId }: ClientProjec
 						window.open("https://www.frederic-fox.com", "_blank");
 					}}
 					id="legacy-cv"
-					selectedId={selectedId}
-					setSelectedId={setSelectedId}
+					windowMetaData={null}
 					label={label}
 					imageAlt={imageAlt}
 					imageTitle={imageTitle}

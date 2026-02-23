@@ -5,7 +5,7 @@ import { WindowMetaData } from "@/lib/WindowMetaData";
 import { EFIContent } from "./EFIContent";
 
 export default function EFI() {
-	const { addWindow, selectedIconId, setSelectedIconId } = useWindowManager();
+	const { addWindow } = useWindowManager();
 	const [, setIsOpen] = useState(false);
 	const windowMetaData = new WindowMetaData({
 		name: "efi",
@@ -26,8 +26,7 @@ export default function EFI() {
 				<DesktopIcon
 					onOpen={open}
 					id={windowMetaData.name}
-					selectedId={selectedIconId}
-					setSelectedId={setSelectedIconId}
+					windowMetaData={windowMetaData}
 					label={windowMetaData.title}
 					imageAlt={`${windowMetaData.title} Icon`}
 					imageTitle={windowMetaData.title}

@@ -4,6 +4,7 @@ import { WindowMetaData } from "@/lib/WindowMetaData";
 import ContactMeContent from "./ContactMeContent";
 import { WindowLauncherIcon } from "@/components/molecules/WindowLauncherIcon";
 import { ClientProjectsProps } from "@/lib/shared-types";
+import InertFileDropdown from "@/components/molecules/InertFileDropdown";
 
 export default function ContactMeIcon(props: ClientProjectsProps) {
 	const windowMetaData = useMemo(
@@ -18,5 +19,5 @@ export default function ContactMeIcon(props: ClientProjectsProps) {
 			}),
 		[],
 	);
-	return <WindowLauncherIcon {...props} windowMetaData={windowMetaData} />;
+	return <WindowLauncherIcon {...props} windowMetaData={windowMetaData} dropdownComponent={<InertFileDropdown />} />;
 }

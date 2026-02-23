@@ -5,6 +5,7 @@ import { WindowMetaData } from "@/lib/WindowMetaData";
 import WebampWindowContent from "./WebampWindowContent";
 import { ClientProjectsProps } from "@/lib/shared-types";
 import { WindowLauncherIcon } from "@/components/molecules/WindowLauncherIcon";
+import InertFileDropdown from "@/components/molecules/InertFileDropdown";
 
 export default function WebampIcon(props: ClientProjectsProps) {
 	const windowMetaData = useMemo(
@@ -26,5 +27,5 @@ export default function WebampIcon(props: ClientProjectsProps) {
 		windowMetaData.component = <WebampWindowContent windowName={windowMetaData.name} windowMetaData={windowMetaData} />;
 	}, [windowMetaData]);
 
-	return <WindowLauncherIcon {...props} windowMetaData={windowMetaData} />;
+	return <WindowLauncherIcon {...props} windowMetaData={windowMetaData} dropdownComponent={<InertFileDropdown />} />;
 }

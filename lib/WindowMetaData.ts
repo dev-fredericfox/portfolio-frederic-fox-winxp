@@ -1,43 +1,43 @@
 type WindowSize = "small" | "smallDynamic" | "max" | "medium" | "min" | "large";
-type WindowMetaDataConstructorParams = {
-	name: string;
-	title: string;
-	tagLine?: string;
-	iconUrl?: string;
-	iconComponent?: React.ReactNode;
-	fileName?: string;
+export type WindowMetaDataConstructorParams = {
 	component?: React.ReactNode;
-	initialWindowWidth?: WindowSize;
+	fileName?: string;
+	iconComponent?: React.ReactNode;
+	iconUrl?: string;
 	initialWindowHeight?: WindowSize;
+	initialWindowWidth?: WindowSize;
+	name: string;
 	overrideWindowComponent?: React.ReactNode | "unstyled";
+	tagLine?: string;
+	title: string;
 };
 
 export class WindowMetaData implements WindowMetaDataConstructorParams {
-	readonly id: string = crypto.randomUUID();
-	readonly name: string;
-	readonly title: string;
-	readonly tagLine?: string;
-	readonly iconUrl?: string;
 	readonly iconComponent?: React.ReactNode;
+	readonly iconUrl?: string;
+	readonly id: string = crypto.randomUUID();
+	readonly initialWindowHeight: WindowSize;
+	readonly initialWindowWidth: WindowSize;
+	readonly name: string;
+	readonly overrideWindowComponent?: React.ReactNode | "unstyled";
+	readonly tagLine?: string;
+	readonly title: string;
+	component?: React.ReactNode;
 	fileName?: string;
 	focused: boolean = true;
 	x: number = 100;
 	y: number = 100;
-	component?: React.ReactNode;
-	readonly initialWindowWidth: WindowSize;
-	readonly initialWindowHeight: WindowSize;
-	readonly overrideWindowComponent?: React.ReactNode | "unstyled";
 	constructor({
-		name,
-		title,
-		tagLine,
-		iconUrl,
-		iconComponent,
-		fileName,
 		component,
-		initialWindowWidth,
+		fileName,
+		iconComponent,
+		iconUrl,
 		initialWindowHeight,
+		initialWindowWidth,
+		name,
 		overrideWindowComponent,
+		tagLine,
+		title,
 	}: WindowMetaDataConstructorParams) {
 		this.name = name;
 		this.title = title;

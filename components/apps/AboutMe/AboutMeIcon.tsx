@@ -5,6 +5,7 @@ import AboutMeContent from "./AboutMeContent";
 import { ClientProjectsProps } from "@/lib/shared-types";
 import { useMemo } from "react";
 import { WindowLauncherIcon } from "@/components/molecules/WindowLauncherIcon";
+import InertFileDropdown from "@/components/molecules/InertFileDropdown";
 
 export default function AboutMeIcon(props: ClientProjectsProps) {
 	const windowMetaData = useMemo(
@@ -21,5 +22,5 @@ export default function AboutMeIcon(props: ClientProjectsProps) {
 		[],
 	);
 
-	return <WindowLauncherIcon {...props} windowMetaData={windowMetaData} />;
+	return <WindowLauncherIcon {...props} windowMetaData={windowMetaData} dropdownComponent={<InertFileDropdown />} />;
 }

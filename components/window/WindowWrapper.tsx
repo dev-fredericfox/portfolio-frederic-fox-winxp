@@ -8,6 +8,7 @@ import { useWindowManager } from "../context-providers/WindowManagerProvider";
 import Image from "next/image";
 import { cva } from "class-variance-authority";
 import { cn } from "@/lib/utils";
+import { SavableWindowMetaData } from "@/lib/SavableWindowMetaData";
 type DraggableProps = {
 	children?: React.ReactNode;
 	windowMetaData: WindowMetaData;
@@ -78,7 +79,12 @@ export default function WindowWrapper({ windowMetaData, children, unstyled }: Dr
 	const y = windowMetaData.y + (transform?.y ?? 0);
 
 	function closeWindowHandler() {
-		closeWindow(windowMetaData);
+		// Cast to see if its a SavableWindowMetaData, if it has the onCloseHook, we call it with the close function, otherwise we just close the window
+		if (windowMetaData instanceof SavableWindowMetaData && windowMetaData.onCloseHook) {
+			windowMetaData.onCloseHook();
+		} else {
+			closeWindow(windowMetaData);
+		}
 	}
 	function maximizeWindow() {
 		if (isMax) {
@@ -122,7 +128,6 @@ export default function WindowWrapper({ windowMetaData, children, unstyled }: Dr
 		transform: isPhoneScreen || isMax ? "none" : `translate3d(${x}px, ${y}px, 0)`,
 		zIndex: getZIndex(windowMetaData),
 	};
-	console.log("Rendering window:", windowMetaData.name, "and style:", style);
 	return (
 		<div
 			className={cn(windowVariants({ sizeWidth: currentWindowWidth, sizeHeight: currentWindowHeight }), isMinimized && "hidden")}

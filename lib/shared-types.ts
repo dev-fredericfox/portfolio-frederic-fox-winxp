@@ -1,6 +1,4 @@
 export type ClientDesktopProjectsProps = {
-	selectedId: string | null;
-	setSelectedId: (id: string | null) => void;
 	placement?: "desktop";
 };
 export type ClientStartMenuProjectsProps = {
@@ -10,3 +8,5 @@ export type ClientStartMenuProjectsProps = {
 };
 
 export type ClientProjectsProps = ClientDesktopProjectsProps | ClientStartMenuProjectsProps;
+
+export type SavedNotes = Record<string, string>;

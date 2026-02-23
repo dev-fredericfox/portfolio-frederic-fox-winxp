@@ -7,9 +7,11 @@ import { isDesktopPlacement } from "@/lib/utils";
 import { WindowMetaData } from "@/lib/WindowMetaData";
 import { ClientProjectsProps } from "@/lib/shared-types";
 import { useCallback, useMemo, useState } from "react";
+import { ContextMenu, ContextMenuTrigger } from "../ui/context-menu";
 
 type WindowLauncherIconProps = ClientProjectsProps & {
 	windowMetaData: WindowMetaData;
+	dropdownComponent?: React.ReactNode;
 };
 
 export function WindowLauncherIcon(props: WindowLauncherIconProps) {
@@ -51,22 +53,24 @@ export function WindowLauncherIcon(props: WindowLauncherIconProps) {
 	}
 
 	if (placement === "desktop" && isDesktopPlacement(props)) {
-		const { selectedId, setSelectedId } = props;
-
 		return (
-			<div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 12 }}>
-				<DesktopIcon
-					onOpen={open}
-					id={windowMetaData.id}
-					selectedId={selectedId}
-					setSelectedId={setSelectedId}
-					label={windowMetaData.fileName ?? windowMetaData.title}
-					imageAlt={`${windowMetaData.title} Icon`}
-					imageTitle={windowMetaData.title}
-					imageUrl={windowMetaData.iconUrl}
-					iconsComponent={windowMetaData.iconComponent}
-				/>
-			</div>
+			<ContextMenu>
+				<div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 12 }}>
+					<ContextMenuTrigger>
+						<DesktopIcon
+							onOpen={open}
+							id={windowMetaData.id}
+							windowMetaData={windowMetaData}
+							label={windowMetaData.fileName ?? windowMetaData.title}
+							imageAlt={`${windowMetaData.title} Icon`}
+							imageTitle={windowMetaData.title}
+							imageUrl={windowMetaData.iconUrl}
+							iconsComponent={windowMetaData.iconComponent}
+						/>
+					</ContextMenuTrigger>
+					{props.dropdownComponent}
+				</div>
+			</ContextMenu>
 		);
 	}
 }
