@@ -36,7 +36,7 @@ export default function Taskbar() {
 				)}>
 				<PopoverTrigger asChild>
 					<Button variant="start" size="start">
-						<img src="https://www.rw-designer.com/icon-view/18835.png" alt="Windows Logo" width={20} height={20} className="inline-block -ml-2 mr-1 -mt-1" />
+						<Image src="https://www.rw-designer.com/icon-view/18835.png" alt="Windows Logo" width={20} height={20} className="inline-block -ml-2 mr-1 -mt-1" />
 						start
 					</Button>
 				</PopoverTrigger>

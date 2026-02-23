@@ -9,6 +9,7 @@ import { SavableWindowMetaData } from "@/lib/SavableWindowMetaData";
 import { SavedNotes } from "@/lib/shared-types";
 import Image from "next/image";
 import { signika } from "@/app/layout";
+import { envs } from "@/lib/envs";
 type NotepadContentProps = {
 	fileName: string;
 	windowMetaData: WindowMetaData;
@@ -103,7 +104,7 @@ export default function NotepadContent({ fileName, windowMetaData }: NotepadCont
 					</DialogHeader>
 					<DialogDescription className="p-2 pl-6">
 						<span className="flex flex-row items-center gap-4">
-							<Image src="/xp-icons/Alert.png" alt="Notepad Save Prompt" width={48} height={48} />
+							<Image src={`${envs.NEXT_PUBLIC_BASE_PATH}/xp-icons/Alert.png`} alt="Notepad Save Prompt" width={48} height={48} />
 							<span className={`${signika.className} text-base select-none`}>Want to save your changes?</span>
 						</span>
 						<span className="mt-4 flex justify-end gap-2">

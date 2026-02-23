@@ -1,5 +1,6 @@
 import BorderGroup from "@/components/atoms/BorderGroup";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { envs } from "@/lib/envs";
 import { Link2Icon, MapPinIcon } from "lucide-react";
 import Image from "next/image";
 export default function AboutMeContent() {
@@ -8,7 +9,13 @@ export default function AboutMeContent() {
 			<div className="flex flex-row p-6 gap-4">
 				<div className="flex flex-col">
 					<figure>
-						<Image src="/glazed/me-square-glaze-protected-intensity-HIGH-V2.jpeg" alt="Frederic Fox Profile Picture" width={120} height={120} className="" />
+						<Image
+							src={`${envs.NEXT_PUBLIC_BASE_PATH}/glazed/me-square-glaze-protected-intensity-HIGH-V2.jpeg`}
+							alt="Frederic Fox Profile Picture"
+							width={120}
+							height={120}
+							className=""
+						/>
 						<figcaption className="italic text-xs text-center mt-2">
 							Protected from Gen-
 							<br />

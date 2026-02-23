@@ -4,6 +4,7 @@ import { MinusCircleIcon } from "lucide-react";
 import Image from "next/image";
 import { libreFranklin } from "./layout";
 import Link from "next/link";
+import { envs } from "@/lib/envs";
 
 export default function Home() {
 	return (
@@ -50,7 +51,7 @@ export default function Home() {
 			<div className="h-20 md:h-28 w-full bg-[#00309C]">
 				<div className="mt-6 ml-6 flex flex-row items-center">
 					<div className="cursor-pointer">
-						<Image className="absolute" src="/shut-down.svg" alt="Shut Down Icon" width={36} height={36} />
+						<Image className="absolute" src={`${envs.NEXT_PUBLIC_BASE_PATH}/shut-down.svg`} alt="Shut Down Icon" width={36} height={36} />
 						<span className="absolute border-2 rounded-lg w-9 h-9 shadow-lg" />
 						<MinusCircleIcon className={cn("h-6 w-6 text-white rotate-90 ml-1.5 mt-1.5")} />
 					</div>

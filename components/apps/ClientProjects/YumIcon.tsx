@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 import { useWindowManager } from "@/components/context-providers/WindowManagerProvider";
 import { WindowMetaData } from "@/lib/WindowMetaData";
 import { YumContent } from "./YumContent";
+import { envs } from "@/lib/envs";
 
 export default function YumIcon() {
 	const { addWindow } = useWindowManager();
@@ -10,7 +11,7 @@ export default function YumIcon() {
 	const windowMetaData = new WindowMetaData({
 		name: "yum",
 		title: "Yum GmbH",
-		iconUrl: "/app-icons/yum.png",
+		iconUrl: `${envs.NEXT_PUBLIC_BASE_PATH}/app-icons/yum.png`,
 		component: <YumContent />,
 	});
 	const windowMetaDataRef = useRef<WindowMetaData | null>(windowMetaData);

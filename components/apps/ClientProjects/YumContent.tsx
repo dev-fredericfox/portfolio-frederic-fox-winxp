@@ -1,3 +1,4 @@
+import { envs } from "@/lib/envs";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 
@@ -12,13 +13,20 @@ export function YumContent() {
 				"text-[13px]",
 				"leading-relaxed",
 				"text-black",
-				"w-full select-text"
+				"w-full select-text",
 			)}>
 			{/* Header row: logos + classification */}
 			<div className="flex items-start justify-between gap-4">
 				<div className="flex items-center gap-3">
 					{/* Replace these paths with your actual assets */}
-					<Image src="/YUM-Logo-rgb_M_color.svg" alt="Yum GmbH Logo" className="h-9 w-auto" draggable={false} width={120} height={120} />
+					<Image
+						src={`${envs.NEXT_PUBLIC_BASE_PATH}/app-icons/YUM-Logo-rgb_M_color.svg`}
+						alt="Yum GmbH Logo"
+						className="h-9 w-auto"
+						draggable={false}
+						width={120}
+						height={120}
+					/>
 				</div>
 
 				<div className="text-right">

@@ -7,6 +7,7 @@ import { ContextMenuContent, ContextMenuGroup, ContextMenuItem, ContextMenuShort
 import { useLocalStorage } from "usehooks-ts";
 import InertFileDropdown from "@/components/molecules/InertFileDropdown";
 import { SavableWindowMetaData } from "@/lib/SavableWindowMetaData";
+import { envs } from "@/lib/envs";
 
 type NotepadIconProps = ClientProjectsProps & {
 	fileName?: string;
@@ -27,7 +28,7 @@ export default function NotepadIcon(props: NotepadIconProps) {
 				name: "notepad",
 				title: "Notepad",
 				tagLine: "Simple Text Editor",
-				iconUrl: "/app-icons/notepad.png",
+				iconUrl: `${envs.NEXT_PUBLIC_BASE_PATH}/app-icons/notepad.png`,
 				component: null,
 				initialWindowHeight: "small",
 				initialWindowWidth: "smallDynamic",

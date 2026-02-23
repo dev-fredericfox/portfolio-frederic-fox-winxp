@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 import { useWindowManager } from "@/components/context-providers/WindowManagerProvider";
 import { WindowMetaData } from "@/lib/WindowMetaData";
 import { KrakenkindContent } from "./KrakenkindContent";
+import { envs } from "@/lib/envs";
 
 export default function KrakenkindIcon() {
 	const { addWindow } = useWindowManager();
@@ -10,7 +11,7 @@ export default function KrakenkindIcon() {
 	const windowMetaData = new WindowMetaData({
 		name: "krakenkind",
 		title: "Krankenkind",
-		iconUrl: "/app-icons/Krakenkind-Cropped.png",
+		iconUrl: `${envs.NEXT_PUBLIC_BASE_PATH}/app-icons/Krakenkind-Cropped.png`,
 		component: <KrakenkindContent />,
 	});
 	const windowMetaDataRef = useRef<WindowMetaData | null>(windowMetaData);

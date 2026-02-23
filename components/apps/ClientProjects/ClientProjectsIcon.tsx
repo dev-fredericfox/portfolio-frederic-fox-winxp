@@ -5,6 +5,7 @@ import { ClientProjectsContent } from "./ClientProjectsContent";
 import { WindowLauncherIcon } from "@/components/molecules/WindowLauncherIcon";
 import { ClientProjectsProps } from "@/lib/shared-types";
 import InertFileDropdown from "@/components/molecules/InertFileDropdown";
+import { envs } from "@/lib/envs";
 
 export default function ClientProjects(props: ClientProjectsProps) {
 	const windowMetaData = useMemo(
@@ -12,7 +13,7 @@ export default function ClientProjects(props: ClientProjectsProps) {
 			new WindowMetaData({
 				name: "client-projects",
 				title: "Client Projects",
-				iconUrl: "/app-icons/folder.png",
+				iconUrl: `${envs.NEXT_PUBLIC_BASE_PATH}/app-icons/folder.png`,
 				component: <ClientProjectsContent />,
 				initialWindowHeight: "small",
 				initialWindowWidth: "medium",

@@ -1,4 +1,5 @@
 import Hr from "@/components/atoms/Hr";
+import { envs } from "@/lib/envs";
 import { cn } from "@/lib/utils";
 import { MailIcon } from "lucide-react";
 import Image from "next/image";
@@ -7,7 +8,7 @@ export default function ContactMeContent() {
 	return (
 		<div className="p-4 w-full">
 			<div className="flex flex-row gap-4">
-				<Image src="/app-icons/fax.png" alt="Contact Me Icon" width={64} height={64} className="mb-4" />
+				<Image src={`${envs.NEXT_PUBLIC_BASE_PATH}/app-icons/fax.png`} alt="Contact Me Icon" width={64} height={64} className="mb-4" />
 				<div>
 					<h1 className="text-2xl font-bold mb-0">Contact Information</h1>
 					<h2 className="text-xl font-semibold mb-2">Get in touch with me</h2>

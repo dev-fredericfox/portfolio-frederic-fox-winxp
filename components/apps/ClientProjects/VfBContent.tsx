@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 export function VFBContent() {
 	return (
@@ -17,13 +18,13 @@ export function VFBContent() {
 			<div className="flex items-start justify-between gap-4">
 				<div className="flex items-center gap-3">
 					{/* Replace these paths with your actual assets */}
-					<img
+					<Image
 						src="https://upload.wikimedia.org/wikipedia/commons/e/eb/VfB_Stuttgart_1893_Logo.svg"
 						alt="VfB Stuttgart"
 						className="h-9 w-auto"
 						draggable={false}
 					/>
-					<img
+					<Image
 						src="https://l4wlsi8vxy8hre4v.public.blob.vercel-storage.com/PayloadLogoBlack.svg"
 						alt="Payload CMS"
 						className="h-7 w-auto opacity-90"

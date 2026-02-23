@@ -6,6 +6,7 @@ import WebampWindowContent from "./WebampWindowContent";
 import { ClientProjectsProps } from "@/lib/shared-types";
 import { WindowLauncherIcon } from "@/components/molecules/WindowLauncherIcon";
 import InertFileDropdown from "@/components/molecules/InertFileDropdown";
+import { envs } from "@/lib/envs";
 
 export default function WebampIcon(props: ClientProjectsProps) {
 	const windowMetaData = useMemo(
@@ -14,7 +15,7 @@ export default function WebampIcon(props: ClientProjectsProps) {
 				name: "webamp-window",
 				title: "Webamp",
 				tagLine: "Classic Winamp in React",
-				iconUrl: "/webamp/winamp2-32x32.png",
+				iconUrl: `${envs.NEXT_PUBLIC_BASE_PATH}/webamp/winamp2-32x32.png`,
 				initialWindowHeight: "medium",
 				initialWindowWidth: "medium",
 				overrideWindowComponent: "unstyled",

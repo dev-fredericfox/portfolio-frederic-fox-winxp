@@ -6,6 +6,7 @@ import { ClientProjectsProps } from "@/lib/shared-types";
 import { useMemo } from "react";
 import { WindowLauncherIcon } from "@/components/molecules/WindowLauncherIcon";
 import InertFileDropdown from "@/components/molecules/InertFileDropdown";
+import { envs } from "@/lib/envs";
 
 export default function AboutMeIcon(props: ClientProjectsProps) {
 	const windowMetaData = useMemo(
@@ -14,7 +15,7 @@ export default function AboutMeIcon(props: ClientProjectsProps) {
 				name: "about-me",
 				title: "Frederic Fox",
 				tagLine: "About Me",
-				iconUrl: "/app-icons/fax_sender_information.png",
+				iconUrl: `${envs.NEXT_PUBLIC_BASE_PATH}/app-icons/fax_sender_information.png`,
 				component: <AboutMeContent />,
 				initialWindowHeight: "small",
 				initialWindowWidth: "medium",

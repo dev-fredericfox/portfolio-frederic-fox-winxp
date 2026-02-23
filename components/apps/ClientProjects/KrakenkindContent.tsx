@@ -1,3 +1,4 @@
+import { envs } from "@/lib/envs";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 
@@ -12,13 +13,20 @@ export function KrakenkindContent() {
 				"text-[13px]",
 				"leading-relaxed",
 				"text-black",
-				"w-full select-text"
+				"w-full select-text",
 			)}>
 			{/* Header row: logos + classification */}
 			<div className="flex items-start justify-between gap-4">
 				<div className="flex items-center gap-3">
 					{/* Replace these paths with your actual assets */}
-					<Image src="/app-icons/Krakenkind-Cropped.png" alt="Krakenkind Logo" className="h-9 w-auto" draggable={false} width={330*2} height={100*2} />
+					<Image
+						src={`${envs.NEXT_PUBLIC_BASE_PATH}/app-icons/Krakenkind-Cropped.png`}
+						alt="Krakenkind Logo"
+						className="h-9 w-auto"
+						draggable={false}
+						width={330 * 2}
+						height={100 * 2}
+					/>
 				</div>
 
 				<div className="text-right">

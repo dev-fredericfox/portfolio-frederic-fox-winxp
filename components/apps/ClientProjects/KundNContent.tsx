@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 export function KundNContent() {
 	return (
@@ -11,13 +12,13 @@ export function KundNContent() {
 				"text-[13px]",
 				"leading-relaxed",
 				"text-black",
-				"w-full select-text"
+				"w-full select-text",
 			)}>
 			{/* Header row: logos + classification */}
 			<div className="flex items-start justify-between gap-4">
 				<div className="flex items-center gap-3">
 					{/* Replace these paths with your actual assets */}
-					<img
+					<Image
 						src="https://upload.wikimedia.org/wikipedia/commons/4/48/Koenig-Neurath_Logo.svg"
 						alt="König & Neurath Logo"
 						className="h-9 w-auto"
