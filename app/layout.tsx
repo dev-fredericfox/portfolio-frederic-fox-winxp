@@ -36,7 +36,10 @@ export const signika = Signika({
 export const viewport: Viewport = {
 	themeColor: "black",
 	width: "device-width",
+	height: "device-height",
+	colorScheme: "dark",
 	initialScale: 1,
+	maximumScale: 1,
 	viewportFit: "cover",
 };
 
