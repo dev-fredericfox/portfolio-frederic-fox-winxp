@@ -38,7 +38,7 @@ export default function AboutMeContent() {
 			<Tabs defaultValue="experience" className="p-3">
 				<TabsList>
 					<TabsTrigger className="" value="experience">
-						Work Experience
+						<span className="hidden md:flex mr-1">Work </span> Experience
 					</TabsTrigger>
 					<TabsTrigger className="" value="skills">
 						Skills
