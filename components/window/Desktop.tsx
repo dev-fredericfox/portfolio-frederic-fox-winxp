@@ -164,7 +164,7 @@ export default function Desktop() {
 					<DndContext onDragEnd={handleDragEnd} onDragStart={handleDragStart}>
 						<div className="grow h-screen flex flex-col">
 							<div className="grow h-full">
-								<div className="flex flex-wrap lg:flex-col relative p-8 max-[376px]:gap-0 max-[391px]:gap-1 gap-2 sm:gap-6 md:gap-8 lg:gap-8 shrink h-fit max-h-screen w-fit">
+								<div className="flex flex-wrap lg:flex-col relative max-[376px]:p-6 p-8 max-[376px]:gap-0 max-[391px]:gap-1 gap-2 sm:gap-6 md:gap-8 lg:gap-8 shrink h-fit max-h-screen w-fit">
 									{derivedIcons.map(({ icon: Icon }, index) => (
 										<Icon key={index} />
 									))}

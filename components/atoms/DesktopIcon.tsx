@@ -4,6 +4,7 @@ import { signika } from "@/app/layout";
 import Image from "next/image";
 import { WindowMetaData } from "@/lib/WindowMetaData";
 import { useWindowManager } from "../context-providers/WindowManagerProvider";
+import { useState } from "react";
 
 type DesktopIconProps = {
 	id: string;
@@ -18,6 +19,7 @@ type DesktopIconProps = {
 
 export function DesktopIcon({ id, windowMetaData, onOpen, label, imageUrl, iconsComponent, imageAlt, imageTitle }: DesktopIconProps) {
 	const { selectedIconId, setSelectedIconId, setSelectedIcon } = useWindowManager();
+	const [loaded, setLoaded] = useState(false);
 	const isSelected = selectedIconId === id;
 	return (
 		<Button
@@ -58,14 +60,25 @@ export function DesktopIcon({ id, windowMetaData, onOpen, label, imageUrl, icons
 					"group-data-[selected=true]:filter-[brightness(1.05)_contrast(0.95)_saturate(1.35)_hue-rotate(200deg)]",
 				)}>
 				{imageUrl ? (
-					<Image
-						src={imageUrl}
-						alt={imageAlt}
-						title={imageTitle}
-						width={40}
-						height={40}
-						className="pointer-events-none h-10 w-10 md:h-12 lg:h-12 md:w-24 lg:w-24 object-contain"
-					/>
+					<div className="relative h-10 w-10 md:h-12 lg:h-12 md:w-24 lg:w-24">
+						{!loaded && (
+							<div className="absolute inset-0 grid place-items-center">
+								<img src="/win-xp-hour-glass.gif" alt="" className="h-8 w-8" />
+							</div>
+						)}
+
+						<Image
+							src={imageUrl}
+							alt={imageAlt}
+							title={imageTitle}
+							fill
+							sizes="96px"
+							className={["pointer-events-none object-contain transition-opacity duration-150", loaded ? "opacity-100" : "opacity-0"].join(" ")}
+							placeholder="empty"
+							onLoadingComplete={() => setLoaded(true)}
+							// onError={() => setLoaded(true)} // optional: prevent spinner forever
+						/>
+					</div>
 				) : (
 					iconsComponent
 				)}

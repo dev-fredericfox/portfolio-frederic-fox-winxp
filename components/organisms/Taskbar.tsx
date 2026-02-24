@@ -40,7 +40,7 @@ export default function Taskbar() {
 						"flex flex-row",
 					)}>
 					<PopoverTrigger asChild>
-						<Button variant="start" size="start" className={`${openWindows.length > MOBILE_MAX_OPEN_WINDOWS ? "w-18" : "w-26"}`}>
+						<Button variant="start" size="start" className={`${openWindows.length > MOBILE_MAX_OPEN_WINDOWS ? "w-18 md:w-26" : "w-26"}`}>
 							<Image
 								src="https://www.rw-designer.com/icon-view/18835.png"
 								alt="Windows Logo"
@@ -48,21 +48,26 @@ export default function Taskbar() {
 								height={20}
 								className="inline-block -ml-2 mr-1 -mt-1"
 							/>
-							<span className={`${openWindows.length > MOBILE_MAX_OPEN_WINDOWS ? "hidden" : ""}`}>start</span>
+							<span className={`${openWindows.length > MOBILE_MAX_OPEN_WINDOWS ? "hidden md:inline" : ""}`}>start</span>
 						</Button>
 					</PopoverTrigger>
 					<div className="flex grow ml-3 gap-1 overflow-x-scroll lg:overflow-hidden">
 						{openWindows.map((window) => {
 							const isFocused = getFocusedWindow()?.id === window.id;
 							return (
-								<Button key={window.name} variant="taskbar" size="taskbar" data-active={isFocused} onClick={() => focusWindow(window)}>
+								<Button
+									key={window.name}
+									variant="taskbar"
+									size={openWindows.length > MOBILE_MAX_OPEN_WINDOWS ? "taskbarShort" : "taskbar"}
+									data-active={isFocused}
+									onClick={() => focusWindow(window)}>
 									<>
 										{window.iconUrl ? (
 											<Image src={window.iconUrl} alt={`${window.title} icon`} width={16} height={16} className="inline-block mr-2" />
 										) : (
 											<div className="w-4 h-4 inline-flex items-center text-white justify-center mr-2">{window.iconComponent}</div>
 										)}
-										{window.title}
+										<span className="min-w-0 truncate">{window.title}</span>
 									</>
 								</Button>
 							);

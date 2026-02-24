@@ -63,6 +63,7 @@ const buttonVariants = cva("", {
 			"icon-lg": "size-10 p-0",
 			start: "pt-1",
 			taskbar: "px-3 mt-1.5 h-7.5 flex items-center w-50 min-w-50",
+			taskbarShort: "px-3 mt-1.5 h-7.5 flex items-center w-26 min-w-26 md:w-50 md:min-w-50 text-ellipsis",
 			windowControl: "w-5 h-8",
 		},
 	},

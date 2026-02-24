@@ -5,7 +5,7 @@ export function ReadMeContent() {
 	return (
 		<div className={cn("leading-relaxed", "text-black", "min-h-full grow w-full")}>
 			<FakeMenuBar />
-			<div className={cn("bg-white", "border border-[#7F9DB9]", "font-[Tahoma,Arial,sans-serif]", "text-[13px]", " h-full grow")}>
+			<div className={cn("bg-white", "border border-[#7F9DB9]", "font-[Tahoma,Arial,sans-serif]", "text-[13px]", " h-full grow", "overflow-x-scroll")}>
 				<div className="whitespace-pre-wrap p-4 w-full select-text">
 					{`Hello there! 
 
