@@ -162,14 +162,7 @@ export default function Desktop() {
 	return (
 		<ContextMenu>
 			<ContextMenuTrigger className="w-full h-full">
-				<main className="flex h-screen w-full flex-col select-none overflow-hidden" onClick={() => setSelectedIconId(null)}>
-					<Image
-						src={`${envs.NEXT_PUBLIC_BASE_PATH}/win-xp-wallpaper.jpeg`}
-						alt="Windows XP Wallpaper"
-						width={1920}
-						height={1080}
-						className="absolute -z-10 h-full w-full object-cover"
-					/>
+				<main className={`flex h-screen w-full flex-col select-none overflow-hidden`} onClick={() => setSelectedIconId(null)}>
 					<DndContext onDragEnd={handleDragEnd} onDragStart={handleDragStart}>
 						<div className="grow h-screen flex flex-col">
 							<div className="grow h-full">

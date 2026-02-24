@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Libre_Franklin, Noto_Sans, Pixelify_Sans, Signika } from "next/font/google";
 import "./globals.css";
+import { envs } from "@/lib/envs";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -53,7 +54,16 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen overflow-hidden`}>{children}</body>
+			<body
+				className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen overflow-hidden`}
+				style={{
+					backgroundImage: `url(${envs.NEXT_PUBLIC_BASE_PATH}/win-xp-wallpaper.jpeg)`,
+					backgroundSize: "cover",
+					backgroundPosition: "center",
+					backgroundRepeat: "no-repeat",
+				}}>
+				{children}
+			</body>
 		</html>
 	);
 }
