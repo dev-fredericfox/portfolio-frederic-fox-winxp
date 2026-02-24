@@ -16,6 +16,8 @@ import RunIcon from "../apps/Run/RunIcon";
 import ImprintIcon from "../apps/Imprint/ImprintIcon";
 import { envs } from "@/lib/envs";
 
+const MOBILE_MAX_OPEN_WINDOWS = 1;
+
 export default function Taskbar() {
 	const [popoverOpen, setPopoverOpen] = useState(false);
 	const { openWindows, updateZIndex, getFocusedWindow } = useWindowManager();
@@ -37,7 +39,7 @@ export default function Taskbar() {
 						"flex flex-row",
 					)}>
 					<PopoverTrigger asChild>
-						<Button variant="start" size="start">
+						<Button variant="start" size="start" className={`${openWindows.length > MOBILE_MAX_OPEN_WINDOWS ? "w-18" : "w-26"}`}>
 							<Image
 								src="https://www.rw-designer.com/icon-view/18835.png"
 								alt="Windows Logo"
@@ -45,7 +47,7 @@ export default function Taskbar() {
 								height={20}
 								className="inline-block -ml-2 mr-1 -mt-1"
 							/>
-							start
+							<span className={`${openWindows.length > MOBILE_MAX_OPEN_WINDOWS ? "hidden" : ""} md:block`}>start</span>
 						</Button>
 					</PopoverTrigger>
 					<div className="flex grow ml-3 gap-1 overflow-x-scroll lg:overflow-hidden">
@@ -71,7 +73,7 @@ export default function Taskbar() {
 						<Clock />
 					</div>
 				</div>
-				<PopoverContent>
+				<PopoverContent className="z-2147483640">
 					<PopoverHeader
 						className={cn(
 							"bg-[linear-gradient(to_bottom,rgba(255,255,255,0.55)_0%,rgba(255,255,255,0.25)_4%,rgba(255,255,255,0.05)_10%,rgba(255,255,255,0)_14%),linear-gradient(to_bottom,#245EDC_0%,#3f8cf3_9%,#245EDC_18%,#245EDC_92%,#1941A5_100%)]",
