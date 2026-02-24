@@ -13,8 +13,7 @@ export function EFIContent() {
 				"leading-relaxed",
 				"text-black",
 				"w-full select-text",
-				"overflow-scroll",
-				"overflow-x-scroll",
+				"overflow-x-auto",
 			)}>
 			<div className="flex items-start justify-between gap-4">
 				<div className="flex items-center gap-3">

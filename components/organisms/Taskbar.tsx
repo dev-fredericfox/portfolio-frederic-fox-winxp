@@ -51,7 +51,7 @@ export default function Taskbar() {
 							<span className={`${openWindows.length > MOBILE_MAX_OPEN_WINDOWS ? "hidden md:inline" : ""}`}>start</span>
 						</Button>
 					</PopoverTrigger>
-					<div className="flex grow ml-3 gap-1 overflow-x-scroll lg:overflow-hidden">
+					<div className="flex grow ml-3 gap-1 overflow-x-auto lg:overflow-hidden">
 						{openWindows.map((window) => {
 							const isFocused = getFocusedWindow()?.id === window.id;
 							return (

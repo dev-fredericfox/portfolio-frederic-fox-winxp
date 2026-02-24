@@ -5,7 +5,7 @@ import { Link2Icon, MapPinIcon } from "lucide-react";
 import Image from "next/image";
 export default function AboutMeContent() {
 	return (
-		<div className="w-full overflow-scroll">
+		<div className="w-full overflow-x-auto">
 			<div className="flex flex-row p-6 gap-4">
 				<div className="flex flex-col">
 					<figure>
