@@ -5,7 +5,7 @@ import { Link2Icon, MapPinIcon } from "lucide-react";
 import Image from "next/image";
 export default function AboutMeContent() {
 	return (
-		<div className="w-full">
+		<div className="w-full overflow-scroll">
 			<div className="flex flex-row p-6 gap-4">
 				<div className="flex flex-col">
 					<figure>
@@ -16,11 +16,7 @@ export default function AboutMeContent() {
 							height={120}
 							className=""
 						/>
-						<figcaption className="italic text-xs text-center mt-2">
-							Protected from Gen-
-							<br />
-							AI with Glazed.
-						</figcaption>
+						<figcaption className="italic text-xs text-center mt-2 max-w-32">Protected from Gen-AI with Glazed.</figcaption>
 					</figure>
 				</div>
 				<div>
@@ -51,50 +47,62 @@ export default function AboutMeContent() {
 					<TabsTrigger value="achievements">Achievements</TabsTrigger>
 				</TabsList>
 				<TabsContent value="experience">
-					<table className="w-full text-left border-collapse">
+					<table className="w-full table-fixed text-left border-collapse">
+						{/* columns: Year | Role | Location */}
+						<colgroup>
+							<col className="w-16 md:w-22" />
+							<col />
+							<col className="w-16" />
+						</colgroup>
 						<thead>
 							<tr>
 								<th className="px-2 py-1">Year</th>
-								<th className="px-2 py-1">Role / Achievement</th>
+								<th className="px-2 py-1">Role</th>
 								<th className="px-2 py-1">Location</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
-								<td className="px-2 py-1">2024 – Today</td>
+								<td className="hidden md:block px-2 py-1">2024–20{getThisYear({})}</td>
+								<td className="md:hidden px-2 py-1">&apos;24–&apos;{getThisYear({ short: true })}</td>
 								<td className="px-2 py-1">
 									<div className="flex flex-col">
-										<span>Founder — Wyr*********e (Stealth)</span>
+										<span>Founder — W*** (Stealth)</span>
 										<span>Indie Gaming Studio</span>
 									</div>
 								</td>
-								<td className="px-2 py-1 text-nowrap">Freiburg, DE</td>
+								<td className="px-2 py-1 text-nowrap">--</td>
 							</tr>
 
 							<tr>
-								<td className="px-2 py-1">2021 – Today</td>
+								<td className="hidden md:block px-2 py-1">2021–20{getThisYear({})}</td>
+								<td className="md:hidden px-2 py-1">&apos;21–&apos;{getThisYear({ short: true })}</td>
 								<td className="px-2 py-1">
 									<div className="flex flex-col">
 										<span>Freelance Software Developer</span>
-										<span>Clients: International football clubs, finance, retail</span>
+										<span>
+											<strong>Clients</strong>: Top football clubs, finance, retail
+										</span>
 									</div>
 								</td>
-								<td className="px-2 py-1 text-nowrap">Frankfurt, DE</td>
+								<td className="px-2 py-1">Freiburg Germany</td>
 							</tr>
 
 							<tr>
-								<td className="px-2 py-1">2018 – 2021</td>
+								<td className="hidden md:block px-2 py-1">2018–2021</td>
+								<td className="md:hidden px-2 py-1">&apos;18–&apos;21</td>
 								<td className="px-2 py-1">
 									<div className="flex flex-col">
 										<span>Founder / CEO — BF International Foods GmbH</span>
 										<span>Brand: Krakenkind — International specialty foods retailer (online &amp; brick-and-mortar)</span>
 									</div>
 								</td>
-								<td className="px-2 py-1 text-nowrap">Berlin, DE</td>
+								<td className="px-2 py-1">Berlin Germany</td>
 							</tr>
 
 							<tr>
-								<td className="px-2 py-1">2015 – 2019</td>
+								<td className="hidden md:block px-2 py-1">2015–2019</td>
+								<td className="md:hidden px-2 py-1">&apos;15–&apos;19</td>
 								<td className="px-2 py-1">
 									<div className="flex flex-col">
 										<span>Founder / CEO — Traffic Hunter GmbH</span>
@@ -102,18 +110,19 @@ export default function AboutMeContent() {
 										<span>Clients: Blizzard, Square Enix, CD Projekt Red, Jamba</span>
 									</div>
 								</td>
-								<td className="px-2 py-1 text-nowrap">Berlin, DE</td>
+								<td className="px-2 py-1">Berlin Germany</td>
 							</tr>
 
 							<tr>
-								<td className="px-2 py-1">2012 – 2014</td>
+								<td className="hidden md:block px-2 py-1">2012–2014</td>
+								<td className="md:hidden px-2 py-1">&apos;12–&apos;14</td>
 								<td className="px-2 py-1">
 									<div className="flex flex-col">
 										<span>Marketing Manager — GameGenetics GmbH</span>
 										<span>Performance Marketing</span>
 									</div>
 								</td>
-								<td className="px-2 py-1 text-nowrap">Berlin, DE</td>
+								<td className="px-2 py-1">Berlin Germany</td>
 							</tr>
 						</tbody>
 					</table>
@@ -205,4 +214,12 @@ export default function AboutMeContent() {
 			</Tabs>
 		</div>
 	);
+}
+
+type GetThisYearOptions = {
+	short?: boolean;
+};
+function getThisYear({ short }: GetThisYearOptions) {
+	const currentYear = new Date().getFullYear();
+	return short ? String(currentYear).slice(-2) : String(currentYear);
 }
