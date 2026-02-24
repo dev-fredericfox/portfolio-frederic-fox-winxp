@@ -12,12 +12,11 @@ export function BrickwiseContent() {
 				"text-[13px]",
 				"leading-relaxed",
 				"text-black",
-				"w-full select-text"
+				"w-full select-text",
+				"overflow-x-scroll",
 			)}>
-			{/* Header row: logos + classification */}
 			<div className="flex items-start justify-between gap-4">
 				<div className="flex items-center gap-3">
-					{/* Replace these paths with your actual assets */}
 					<Image
 						src="https://cdn.prod.website-files.com/62414ac6ad5d1a1acc6c486a/62414ac6ad5d1aceab6c49c4_brickwise_logo.svg"
 						alt="Brickwise GmbH Logo"

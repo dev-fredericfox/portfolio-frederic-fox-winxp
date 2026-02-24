@@ -14,11 +14,10 @@ export function KrakenkindContent() {
 				"leading-relaxed",
 				"text-black",
 				"w-full select-text",
+				"overflow-x-scroll",
 			)}>
-			{/* Header row: logos + classification */}
 			<div className="flex items-start justify-between gap-4">
 				<div className="flex items-center gap-3">
-					{/* Replace these paths with your actual assets */}
 					<Image
 						src={`${envs.NEXT_PUBLIC_BASE_PATH}/app-icons/Krakenkind-Cropped.png`}
 						alt="Krakenkind Logo"

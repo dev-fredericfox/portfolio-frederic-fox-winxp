@@ -14,16 +14,17 @@ export function EFIContent() {
 				"text-black",
 				"w-full select-text",
 				"overflow-scroll",
+				"overflow-x-scroll",
 			)}>
-			{/* Header row: logos + classification */}
 			<div className="flex items-start justify-between gap-4">
 				<div className="flex items-center gap-3">
-					{/* Replace these paths with your actual assets */}
 					<Image
 						src="https://upload.wikimedia.org/wikipedia/de/3/32/Logo_Eintracht_Frankfurt_1998.svg"
 						alt="Eintracht Frankfurt"
 						className="h-9 w-auto"
 						draggable={false}
+						width={330 * 2}
+						height={100 * 2}
 					/>
 				</div>
 

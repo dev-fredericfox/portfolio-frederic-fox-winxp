@@ -14,18 +14,18 @@ export function YumContent() {
 				"leading-relaxed",
 				"text-black",
 				"w-full select-text",
+				"overflow-x-scroll",
 			)}>
-			{/* Header row: logos + classification */}
 			<div className="flex items-start justify-between gap-4">
 				<div className="flex items-center gap-3">
-					{/* Replace these paths with your actual assets */}
 					<Image
-						src={`${envs.NEXT_PUBLIC_BASE_PATH}/app-icons/YUM-Logo-rgb_M_color.svg`}
+						src={`${envs.NEXT_PUBLIC_BASE_PATH}/YUM-Logo-rgb_M_color.svg`}
+						
 						alt="Yum GmbH Logo"
 						className="h-9 w-auto"
 						draggable={false}
-						width={120}
-						height={120}
+						width={120 * 2}
+						height={120 * 2}
 					/>
 				</div>
 

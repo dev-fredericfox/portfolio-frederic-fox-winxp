@@ -53,17 +53,16 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en">
-			<body
-				className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen overflow-hidden`}
-				style={{
-					backgroundImage: `url(${envs.NEXT_PUBLIC_BASE_PATH}/win-xp-wallpaper.jpeg)`,
-					backgroundSize: "cover",
-					backgroundPosition: "center",
-					backgroundRepeat: "no-repeat",
-				}}>
-				{children}
-			</body>
+		<html
+			lang="en"
+			style={{
+				backgroundImage: `url(${envs.NEXT_PUBLIC_BASE_PATH}/win-xp-wallpaper.jpeg)`,
+				backgroundSize: "cover",
+				backgroundPosition: "center",
+				backgroundRepeat: "no-repeat",
+				backgroundColor: "#0b0b0b",
+			}}>
+			<body className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen overflow-hidden bg-transparent`}>{children}</body>
 		</html>
 	);
 }

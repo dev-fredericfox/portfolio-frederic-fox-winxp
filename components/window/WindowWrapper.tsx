@@ -34,7 +34,7 @@ const windowVariants = cva(
 				smallDynamic: "lg:min-h-30 lg:h-auto",
 				medium: "lg:min-h-60 lg:max-h-[80vh]",
 				large: "lg:min-h-100",
-				max: "h-[calc(100vh-72px)] md:h-[calc(100vh-40px)]",
+				max: "h-[calc(100vh-72px)] lg:h-[calc(100vh-40px)]",
 				min: "hidden",
 			},
 		},
@@ -45,14 +45,14 @@ const windowVariants = cva(
 	},
 );
 
-const innerWindowVariants = cva("w-full bg-[#ece9d8] mb-px mx-px flex max-h-[calc(100vh-70px)]", {
+const innerWindowVariants = cva("w-full bg-[#ece9d8] mb-px mx-px flex md:max-h-[calc(100vh-70px)] max-h-[calc(100vh-104px)]", {
 	variants: {
 		sizeHeight: {
 			small: "lg:min-h-40",
 			smallDynamic: "lg:h-auto",
 			medium: "lg:h-200",
 			large: "lg:h-100",
-			max: "h-full min-h-[calc(100vh-70px)] h-[calc(100vh-70px)]",
+			max: "h-full md:min-h-[calc(100vh-70px)] md:h-[calc(100vh-70px)] min-h-[calc(100vh-104px)] h-[calc(100vh-104px)]",
 			min: "hidden",
 		},
 	},

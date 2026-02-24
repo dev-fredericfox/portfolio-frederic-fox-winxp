@@ -7,7 +7,6 @@ import WindowWrapper from "./WindowWrapper";
 import { DndContext, DragEndEvent, DragStartEvent } from "@dnd-kit/core";
 import { useWindowManager } from "../context-providers/WindowManagerProvider";
 import Taskbar from "../organisms/Taskbar";
-import Image from "next/image";
 import AboutMeIcon from "../apps/AboutMe/AboutMeIcon";
 import ReadMeIcon from "../apps/ReadMe/ReadMeIcon";
 import ContactMeIcon from "../apps/ContactMe/ContactMeIcon";
@@ -29,7 +28,6 @@ import {
 import { useRouter } from "next/navigation";
 import { useHotkeys } from "react-hotkeys-hook";
 import { WindowMetaData } from "@/lib/WindowMetaData";
-import { envs } from "@/lib/envs";
 
 type SavedNotes = Record<string, string>;
 
@@ -80,7 +78,6 @@ export default function Desktop() {
 			// Edge Case Edit Me Note, we can copy that one.
 			if (selectedIcon?.fileName === "Edit Me") {
 				setClipBoard(selectedIcon);
-				console.log("Edit Me note copied to clipboard");
 			}
 		}
 	}
