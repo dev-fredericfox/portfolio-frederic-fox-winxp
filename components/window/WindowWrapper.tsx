@@ -34,7 +34,7 @@ const windowVariants = cva(
 				smallDynamic: "lg:min-h-30 lg:h-auto",
 				medium: "lg:min-h-60 lg:max-h-[80vh]",
 				large: "lg:min-h-100",
-				max: "h-[calc(100vh-40px)]",
+				max: "h-[calc(100vh-72px)] md:h-[calc(100vh-40px)]",
 				min: "hidden",
 			},
 		},
