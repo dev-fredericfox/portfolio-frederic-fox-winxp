@@ -47,7 +47,7 @@ export default function Taskbar() {
 								height={20}
 								className="inline-block -ml-2 mr-1 -mt-1"
 							/>
-							<span className={`${openWindows.length > MOBILE_MAX_OPEN_WINDOWS ? "hidden" : ""} md:block`}>start</span>
+							<span className={`${openWindows.length > MOBILE_MAX_OPEN_WINDOWS ? "hidden" : ""}`}>start</span>
 						</Button>
 					</PopoverTrigger>
 					<div className="flex grow ml-3 gap-1 overflow-x-scroll lg:overflow-hidden">

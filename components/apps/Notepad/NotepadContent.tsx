@@ -22,14 +22,10 @@ export const NOTEPAD_SAVE_KEY = "notepad-save";
 //onCloseHook: saveBeforeClosingPrompt,
 
 /** Placeholder function in case we need to modify / sanitize later on. */
-export const buildFileNameKey = (fileName: string) => fileName;
+export const buildFileNameKey = (fileName: string) => fileName ?? "Edit Me";
 export default function NotepadContent({ fileName, windowMetaData }: NotepadContentProps) {
 	const printDivRef = useRef<HTMLDivElement>(null);
-	const [savedNotes, setSavedNotes] = useLocalStorage<SavedNotes>(
-		NOTEPAD_SAVE_KEY,
-		{},
-		{ serializer: JSON.stringify, deserializer: JSON.parse, initializeWithValue: false },
-	);
+	const [savedNotes] = useLocalStorage<SavedNotes>(NOTEPAD_SAVE_KEY, {}, { serializer: JSON.stringify, deserializer: JSON.parse, initializeWithValue: false });
 	const [discardDialogOpen, setDiscardDialogOpen] = useState(false);
 	const { closeWindow } = useWindowManager();
 	const [savedContent, setSavedContent] = useLocalStorage<FileStorage>(
@@ -75,9 +71,9 @@ export default function NotepadContent({ fileName, windowMetaData }: NotepadCont
 		const oldFileNameKey = buildFileNameKey(fileName);
 		const newFileNameKey = buildFileNameKey(newFileName);
 		setSavedContent((prev) => {
-			const { [oldFileNameKey]: oldContent, ...rest } = prev;
+			const { [oldFileNameKey]: oldContent } = prev;
 			return {
-				...rest,
+				...prev,
 				[newFileNameKey]: oldContent,
 			};
 		});

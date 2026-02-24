@@ -72,7 +72,6 @@ export default function WebampWindowContent({ windowName, windowMetaData }: Prop
 
 				// Grab the injected element and put it in state
 				const el = document.body.querySelector<HTMLElement>("#webamp");
-				console.log("Webamp element injected:", el);
 				setWebampEl(el ?? null);
 			} catch (error) {
 				console.error("Error rendering Webamp:", error);

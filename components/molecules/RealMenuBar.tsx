@@ -72,8 +72,8 @@ export default function RealMenuBar({ items = defaultItems, onSave, onSaveAs, pr
 							<DialogTitle className="text-white font-bold text-sm [text-shadow:1px_1px_#0f1089] mt-1 select-none">Save as</DialogTitle>
 						</DialogHeader>
 
-						<DialogDescription className="p-2 pl-6">
-							<DialogTitle className="font-['Trebuchet_MS'] mb-2 select-none">File Name</DialogTitle>
+						<div className="p-2 pl-6">
+							<p className="font-['Trebuchet_MS'] select-none text-md font-bold mb-2">File Name</p>
 							<Input
 								type="text"
 								className="border border-gray-400 rounded px-2 py-1 w-full"
@@ -89,7 +89,7 @@ export default function RealMenuBar({ items = defaultItems, onSave, onSaveAs, pr
 									Save
 								</Button>
 							</span>
-						</DialogDescription>
+						</div>
 					</DialogContent>
 				</Dialog>
 
