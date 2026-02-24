@@ -15,6 +15,7 @@ import Link from "next/link";
 import RunIcon from "../apps/Run/RunIcon";
 import ImprintIcon from "../apps/Imprint/ImprintIcon";
 import { envs } from "@/lib/envs";
+import SourcesIcon from "../apps/Sources/SourcesIcon";
 
 const MOBILE_MAX_OPEN_WINDOWS = 1;
 
@@ -96,6 +97,7 @@ export default function Taskbar() {
 						<div className="bg-[#d7e5f8] border-l border-[#c3d4f3] p-2 gap-3 flex flex-col">
 							<RunIcon placement="start-menu" closeStartMenuCb={() => setPopoverOpen(false)} />
 							<ImprintIcon placement="start-menu" closeStartMenuCb={() => setPopoverOpen(false)} />
+							<SourcesIcon placement="start-menu" closeStartMenuCb={() => setPopoverOpen(false)} />
 						</div>
 					</div>
 					<div className="bg-[linear-gradient(to_bottom,#3f8cf3_0%,#245EDC_18%,#245EDC_92%,#1941A5_100%)] h-12 w-screen lg:w-110">
