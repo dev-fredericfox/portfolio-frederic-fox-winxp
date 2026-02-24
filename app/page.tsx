@@ -9,12 +9,6 @@ import { envs } from "@/lib/envs";
 export const metadata = {
 	title: "Frederic Fox's Portfolio | Home",
 	description: "Frederic Fox's Software Developer Portfolio.",
-	viewport: {
-		width: "device-width",
-		initialScale: 1,
-		fitToDevice: true,
-		viewportFit: "cover",
-	},
 	appleMobileWebApp: {
 		capable: true,
 		title: "Frederic Fox's Portfolio | Home",
