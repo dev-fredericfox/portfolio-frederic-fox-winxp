@@ -45,11 +45,12 @@ const DESKTOP_ICONS = [
 ];
 
 function convertNotePadSavesToIcons(savedNotes: SavedNotes): { name: string; icon: () => JSX.Element }[] {
-	return Object.keys(savedNotes).map((fileName) => ({
-		name: fileName,
-		icon: () => <NotepadIcon placement="desktop" fileName={fileName} />,
-	}));
-	// .filter(({ name }) => name !== "Edit Me"); // We don't want to show Edit Me as an icon on the desktop
+	return Object.keys(savedNotes)
+		.map((fileName) => ({
+			name: fileName,
+			icon: () => <NotepadIcon placement="desktop" fileName={fileName} />,
+		}))
+		.filter(({ name }) => name !== "Edit Me"); // We don't want to show Edit Me as an additionally saved file icon on the desktop
 }
 
 export default function Desktop() {
