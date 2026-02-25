@@ -135,10 +135,86 @@
 	body {
 		visibility: hidden;
 	}
+	@page {
+		background: none;
+		background-image: none;
+		visibility: hidden;
+	}
 	.section-to-print {
-		visibility: visible;
+		visibility: visible !important;
 		position: absolute;
 		left: 0;
 		top: 0;
 	}
+}
+
+:root {
+	/* Scroll bar */
+	--scrollbar-bg: linear-gradient(90deg, rgba(197, 213, 255, 1) 0%, rgba(181, 211, 255, 1) 86%, rgba(182, 202, 247, 1) 100%);
+	--scrollbar-shadow: inset 1px 1px white, inset -1px -1px white, inset 2px 2px #b9cdfa, inset -2px -2px #b6c9f7;
+}
+
+::-webkit-scrollbar {
+	width: 17px;
+}
+
+::-webkit-scrollbar-corner {
+	background: #dfdfdf;
+}
+
+::-webkit-scrollbar-track {
+	background-image: url("/scrollbar/scroll-background.svg");
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+::-webkit-scrollbar-thumb {
+	background-image: url("/scrollbar/scroll-thumb.svg");
+	background-position: 50%;
+	background-repeat: no-repeat;
+	background-color: #c8d6fb;
+	background-size: 7px;
+	border: 1px solid #fff;
+	border-radius: 2px;
+	box-shadow:
+		inset -3px 0 #bad1fc,
+		inset 1px 1px #b7caf5;
+}
+
+/* Show the arrow buttons */
+::-webkit-scrollbar-button:horizontal:start:decrement,
+::-webkit-scrollbar-button:horizontal:end:increment,
+::-webkit-scrollbar-button:vertical:start:decrement,
+::-webkit-scrollbar-button:vertical:end:increment {
+	display: block;
+}
+
+/* Vertical buttons */
+::-webkit-scrollbar-button:vertical:start {
+	height: 17px;
+	background-image: url("/scrollbar/scroll-arrow-up.svg");
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+::-webkit-scrollbar-button:vertical:end {
+	height: 17px;
+	background-image: url("/scrollbar/scroll-arrow-down.svg");
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+/* Horizontal buttons */
+::-webkit-scrollbar-button:horizontal:start {
+	width: 16px;
+	background-image: url("/scrollbar/scroll-arrow-left.svg");
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+::-webkit-scrollbar-button:horizontal:end {
+	width: 16px;
+	background-image: url("/scrollbar/scroll-arrow-right.svg");
+	background-repeat: no-repeat;
+	background-position: center;
 }
