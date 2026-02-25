@@ -1,25 +1,29 @@
 "use client";
 import { WindowMetaData } from "@/lib/WindowMetaData";
-import { createContext, useState, ReactNode, use, useCallback } from "react";
+import { createContext, useState, ReactNode, use, useCallback, useRef } from "react";
 type WindowManagerProviderProps = {
 	children: ReactNode;
 };
 const TIME_OFFSET = 1768784300000;
 type WindowManagerContextType = {
-	openWindows: WindowMetaData[];
-	setOpenWindows: (windowIds: WindowMetaData[]) => void;
 	addWindow: (window: WindowMetaData) => void;
 	closeWindow: (window: WindowMetaData | null) => void;
-	findById: (id: string) => WindowMetaData | null;
-	selectedIconId: string | null;
-	setSelectedIconId: (id: string | null) => void;
-	selectedIcon: WindowMetaData | null;
-	setSelectedIcon: (icon: WindowMetaData | null) => void;
-	getZIndex: (window: WindowMetaData) => number;
-	updateZIndex: (window: WindowMetaData) => void;
-	resetZIndex: (window: WindowMetaData) => void;
 	closeWindowByName: (windowName: string) => void;
+	editingName: string | null;
+	findById: (id: string) => WindowMetaData | null;
 	getFocusedWindow: () => WindowMetaData | null;
+	getOnCloseHook: (id: string) => (() => void) | undefined;
+	getZIndex: (window: WindowMetaData) => number;
+	openWindows: WindowMetaData[];
+	registerOnCloseHook: (id: string, hook?: () => void) => void;
+	resetZIndex: (window: WindowMetaData) => void;
+	selectedIcon: WindowMetaData | null;
+	selectedIconId: string | null;
+	setEditingName: (editingName: string | null) => void;
+	setOpenWindows: (windowIds: WindowMetaData[]) => void;
+	setSelectedIcon: (icon: WindowMetaData | null) => void;
+	setSelectedIconId: (id: string | null) => void;
+	updateZIndex: (window: WindowMetaData) => void;
 };
 
 /**
@@ -34,6 +38,8 @@ const WindowManagerProvider = ({ children }: WindowManagerProviderProps) => {
 	const [selectedIconId, _setSelectedIconId] = useState<string | null>(null);
 	const [selectedIcon, _setSelectedIcon] = useState<WindowMetaData | null>(null);
 	const [windowZIndices, setWindowZIndices] = useState<{ [key: string]: number }>({});
+	const [editingName, setEditingName] = useState<string | null>(null);
+	const closeHooks = useRef(new Map<string, () => void>());
 	function setOpenWindows(windows: WindowMetaData[]) {
 		_setOpenWindows(windows);
 	}
@@ -84,10 +90,12 @@ const WindowManagerProvider = ({ children }: WindowManagerProviderProps) => {
 
 	function setSelectedIconId(id: string | null) {
 		_setSelectedIconId(id);
+		setEditingName(null);
 	}
 
 	function setSelectedIcon(icon: WindowMetaData | null) {
 		_setSelectedIcon(icon);
+		setEditingName(null);
 	}
 
 	function getFocusedWindow() {
@@ -103,23 +111,36 @@ const WindowManagerProvider = ({ children }: WindowManagerProviderProps) => {
 		return focusedWindow;
 	}
 
+	function registerOnCloseHook(id: string, hook?: () => void) {
+		if (!hook) closeHooks.current.delete(id);
+		else closeHooks.current.set(id, hook);
+	}
+
+	function getOnCloseHook(id: string) {
+		return closeHooks.current.get(id);
+	}
+
 	return (
 		<WindowManagerContext.Provider
 			value={{
-				openWindows,
-				setOpenWindows,
 				addWindow,
 				closeWindow,
 				closeWindowByName,
+				editingName,
 				findById,
-				selectedIconId,
-				setSelectedIconId,
-				selectedIcon,
-				setSelectedIcon,
-				getZIndex,
-				updateZIndex,
-				resetZIndex,
 				getFocusedWindow,
+				getOnCloseHook,
+				getZIndex,
+				openWindows,
+				registerOnCloseHook,
+				resetZIndex,
+				selectedIcon,
+				selectedIconId,
+				setEditingName,
+				setOpenWindows,
+				setSelectedIcon,
+				setSelectedIconId,
+				updateZIndex,
 			}}>
 			{children}
 		</WindowManagerContext.Provider>

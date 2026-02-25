@@ -8,10 +8,12 @@ import { WindowMetaData } from "@/lib/WindowMetaData";
 import { ClientProjectsProps } from "@/lib/shared-types";
 import { useCallback, useMemo, useState } from "react";
 import { ContextMenu, ContextMenuTrigger } from "../ui/context-menu";
+import { SavableWindowMetaData } from "@/lib/SavableWindowMetaData";
 
 type WindowLauncherIconProps = ClientProjectsProps & {
 	windowMetaData: WindowMetaData;
 	dropdownComponent?: React.ReactNode;
+	editingName?: boolean;
 };
 
 export function WindowLauncherIcon(props: WindowLauncherIconProps) {
@@ -53,6 +55,8 @@ export function WindowLauncherIcon(props: WindowLauncherIconProps) {
 	}
 
 	if (placement === "desktop" && isDesktopPlacement(props)) {
+		const fileName = windowMetaData instanceof SavableWindowMetaData ? windowMetaData.fileName : undefined;
+		const label = fileName ?? windowMetaData.title;
 		return (
 			<ContextMenu>
 				<div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 12 }}>
@@ -61,11 +65,12 @@ export function WindowLauncherIcon(props: WindowLauncherIconProps) {
 							onOpen={open}
 							id={windowMetaData.id}
 							windowMetaData={windowMetaData}
-							label={windowMetaData.fileName ?? windowMetaData.title}
+							label={label}
 							imageAlt={`${windowMetaData.title} Icon`}
 							imageTitle={windowMetaData.title}
 							imageUrl={windowMetaData.iconUrl}
 							iconsComponent={windowMetaData.iconComponent}
+							editingName={props.editingName}
 						/>
 					</ContextMenuTrigger>
 					{props.dropdownComponent}

@@ -1,13 +1,13 @@
 import { WindowMetaData, WindowMetaDataConstructorParams } from "./WindowMetaData";
 
 type SavableWindowMetaDataConstructorParams = {
-	onCloseHook?: () => void;
+	fileName?: string;
 };
 export class SavableWindowMetaData extends WindowMetaData implements SavableWindowMetaDataConstructorParams {
-	onCloseHook?: () => void;
-
+	fileName?: string;
 	constructor(params: WindowMetaDataConstructorParams & SavableWindowMetaDataConstructorParams) {
 		super(params);
-		if (params.onCloseHook) this.onCloseHook = params.onCloseHook;
+		const { fileName } = params;
+		if (fileName) this.fileName = fileName;
 	}
 }

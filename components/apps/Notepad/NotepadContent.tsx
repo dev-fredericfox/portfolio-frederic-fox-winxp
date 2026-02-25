@@ -1,8 +1,8 @@
 import RealMenuBar from "@/components/molecules/RealMenuBar";
 import { WindowMetaData } from "@/lib/WindowMetaData";
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useLocalStorage } from "usehooks-ts";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "../../ui/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "../../ui/dialog";
 import { Button } from "@/components/ui/button";
 import { useWindowManager } from "@/components/context-providers/WindowManagerProvider";
 import { SavableWindowMetaData } from "@/lib/SavableWindowMetaData";
@@ -10,25 +10,21 @@ import { SavedNotes } from "@/lib/shared-types";
 import Image from "next/image";
 import { signika } from "@/app/layout";
 import { envs } from "@/lib/envs";
+
 type NotepadContentProps = {
 	fileName: string;
 	windowMetaData: WindowMetaData;
+	saveAsHandler: (currentFileName: string, newFileName: string, setSavedContent: React.Dispatch<React.SetStateAction<SavedNotes>>) => boolean;
 };
-type FileStorage = {
-	[key: string]: string;
-};
+
 export const NOTEPAD_SAVE_KEY = "notepad-save";
-
-//onCloseHook: saveBeforeClosingPrompt,
-
-/** Placeholder function in case we need to modify / sanitize later on. */
 export const buildFileNameKey = (fileName: string) => fileName ?? "Edit Me";
-export default function NotepadContent({ fileName, windowMetaData }: NotepadContentProps) {
+export default function NotepadContent({ fileName, windowMetaData, saveAsHandler }: NotepadContentProps) {
 	const printDivRef = useRef<HTMLDivElement>(null);
 	const [savedNotes] = useLocalStorage<SavedNotes>(NOTEPAD_SAVE_KEY, {}, { serializer: JSON.stringify, deserializer: JSON.parse, initializeWithValue: false });
 	const [discardDialogOpen, setDiscardDialogOpen] = useState(false);
-	const { closeWindow } = useWindowManager();
-	const [savedContent, setSavedContent] = useLocalStorage<FileStorage>(
+	const { closeWindow, registerOnCloseHook } = useWindowManager();
+	const [savedContent, setSavedContent] = useLocalStorage<SavedNotes>(
 		NOTEPAD_SAVE_KEY,
 		{
 			[buildFileNameKey(fileName)]: "",
@@ -49,9 +45,12 @@ export default function NotepadContent({ fileName, windowMetaData }: NotepadCont
 		}
 		setDiscardDialogOpen(true);
 	}, [setDiscardDialogOpen, savedNotes, fileName, content, closeWindow, windowMetaData]);
-	if (windowMetaData instanceof SavableWindowMetaData) {
-		windowMetaData.onCloseHook = saveBeforeClosingPrompt;
-	}
+	useEffect(() => {
+		if (windowMetaData instanceof SavableWindowMetaData) {
+			registerOnCloseHook(windowMetaData.id, saveBeforeClosingPrompt);
+			return () => registerOnCloseHook(windowMetaData.id, undefined);
+		}
+	}, [windowMetaData, saveBeforeClosingPrompt, registerOnCloseHook]);
 
 	function saveAndClose() {
 		save();
@@ -67,22 +66,15 @@ export default function NotepadContent({ fileName, windowMetaData }: NotepadCont
 	function save() {
 		setSavedContent({ ...savedContent, [buildFileNameKey(fileName)]: content[buildFileNameKey(fileName)] });
 	}
-	function saveAs(newFileName: string) {
-		const oldFileNameKey = buildFileNameKey(fileName);
-		const newFileNameKey = buildFileNameKey(newFileName);
-		setSavedContent((prev) => {
-			const { [oldFileNameKey]: oldContent } = prev;
-			return {
-				...prev,
-				[newFileNameKey]: oldContent,
-			};
-		});
+
+	function onSaveAs(newFileName: string) {
+		return saveAsHandler(fileName, newFileName, setSavedContent);
 	}
 
 	return (
 		<>
 			<div className="flex flex-col w-full h-full">
-				<RealMenuBar onSave={save} onSaveAs={saveAs} printTarget={printDivRef} windowMetaData={windowMetaData} />
+				<RealMenuBar onSave={save} onSaveAs={onSaveAs} printTarget={printDivRef} windowMetaData={windowMetaData} />
 				<div className="grow" ref={printDivRef}>
 					<textarea
 						className="w-full h-full bg-white outline-none resize-none min-h-40"

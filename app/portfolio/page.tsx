@@ -1,3 +1,4 @@
+import { ClipBoardProvider } from "@/components/context-providers/ClipBoardProvider";
 import { WindowManagerProvider } from "@/components/context-providers/WindowManagerProvider";
 import Desktop from "@/components/window/Desktop";
 
@@ -14,7 +15,9 @@ export const metadata = {
 export default function Page() {
 	return (
 		<WindowManagerProvider>
-			<Desktop />
+			<ClipBoardProvider>
+				<Desktop />
+			</ClipBoardProvider>
 		</WindowManagerProvider>
 	);
 }

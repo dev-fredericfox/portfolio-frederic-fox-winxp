@@ -23,7 +23,6 @@ export class WindowMetaData implements WindowMetaDataConstructorParams {
 	readonly tagLine?: string;
 	readonly title: string;
 	component?: React.ReactNode;
-	fileName?: string;
 	focused: boolean = true;
 	x: number = 100;
 	y: number = 100;
@@ -45,7 +44,6 @@ export class WindowMetaData implements WindowMetaDataConstructorParams {
 		if (iconUrl) this.iconUrl = iconUrl;
 		if (iconComponent) this.iconComponent = iconComponent;
 		this.component = component;
-		if (fileName) this.fileName = fileName;
 		this.initialWindowWidth = initialWindowWidth ?? "medium";
 		this.initialWindowHeight = initialWindowHeight ?? "medium";
 		if (overrideWindowComponent) this.overrideWindowComponent = overrideWindowComponent;

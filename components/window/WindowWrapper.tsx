@@ -65,12 +65,13 @@ const WindowWrapperFwdRef = React.forwardRef<HTMLDivElement, DraggableProps>(({ 
 });
 WindowWrapperFwdRef.displayName = "WindowWrapperFwdRef";
 export default function WindowWrapper({ windowMetaData, children, unstyled }: DraggableProps) {
-	const { id, initialWindowHeight, initialWindowWidth, iconUrl, title, fileName } = windowMetaData;
+	const { id, initialWindowHeight, initialWindowWidth, iconUrl, title } = windowMetaData;
+
 	const [currentWindowHeight, setCurrentWindowHeight] = useState(initialWindowHeight);
 	const [currentWindowWidth, setCurrentWindowWidth] = useState(initialWindowWidth);
 	const [isMax, setIsMax] = useState(false);
 	const [isMinimized, setIsMinimized] = useState(false);
-	const { closeWindow, getZIndex, updateZIndex, getFocusedWindow, resetZIndex } = useWindowManager();
+	const { closeWindow, getZIndex, updateZIndex, getFocusedWindow, resetZIndex, getOnCloseHook } = useWindowManager();
 	const { attributes, listeners, setNodeRef, transform } = useDraggable({
 		id,
 	});
@@ -80,11 +81,14 @@ export default function WindowWrapper({ windowMetaData, children, unstyled }: Dr
 
 	function closeWindowHandler() {
 		// Cast to see if its a SavableWindowMetaData, if it has the onCloseHook, we call it with the close function, otherwise we just close the window
-		if (windowMetaData instanceof SavableWindowMetaData && windowMetaData.onCloseHook) {
-			windowMetaData.onCloseHook();
-		} else {
-			closeWindow(windowMetaData);
+		if (windowMetaData instanceof SavableWindowMetaData) {
+			const onCloseHook = getOnCloseHook(windowMetaData.id);
+			if (onCloseHook) {
+				onCloseHook();
+				return;
+			}
 		}
+		closeWindow(windowMetaData);
 	}
 	function maximizeWindow() {
 		if (isMax) {
@@ -145,7 +149,7 @@ export default function WindowWrapper({ windowMetaData, children, unstyled }: Dr
 						<div className="w-4 h-4 flex items-center text-white justify-center">{windowMetaData.iconComponent}</div>
 					)}
 					<p className="text-white font-bold [text-shadow:1px_1px_#0f1089]">
-						<NameTitle name={fileName} title={title} />
+						<NameTitle name={windowMetaData instanceof SavableWindowMetaData ? windowMetaData.fileName : undefined} title={title} />
 					</p>
 				</div>
 				<div className="flex justify-end gap-0.5 pr-1">

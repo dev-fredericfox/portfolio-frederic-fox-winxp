@@ -8,18 +8,23 @@ import { useLocalStorage } from "usehooks-ts";
 import InertFileDropdown from "@/components/molecules/InertFileDropdown";
 import { SavableWindowMetaData } from "@/lib/SavableWindowMetaData";
 import { envs } from "@/lib/envs";
+import { useWindowManager } from "@/components/context-providers/WindowManagerProvider";
+import { useClipBoard } from "@/components/context-providers/ClipBoardProvider";
 
 type NotepadIconProps = ClientProjectsProps & {
 	fileName?: string;
 	rightClickDisabled?: boolean;
+	saveAsHandler: (currentFileName: string, newFileName: string, setSavedContent: React.Dispatch<React.SetStateAction<SavedNotes>>) => boolean;
 };
 
 export default function NotepadIcon(props: NotepadIconProps) {
-	const [, setSavedNotes] = useLocalStorage<SavedNotes>(
+	const { editingName } = useWindowManager();
+	const [savedNotes, setSavedNotes] = useLocalStorage<SavedNotes>(
 		NOTEPAD_SAVE_KEY,
 		{},
 		{ serializer: JSON.stringify, deserializer: JSON.parse, initializeWithValue: false },
 	);
+	const { handleSetNotepadClipBoard } = useClipBoard();
 	const fileName = props.fileName ?? "Untitled.txt";
 
 	const windowMetaData = useMemo(
@@ -37,8 +42,8 @@ export default function NotepadIcon(props: NotepadIconProps) {
 		[fileName],
 	);
 	useEffect(() => {
-		windowMetaData.component = <NotepadContent fileName={fileName} windowMetaData={windowMetaData} />;
-	}, [fileName, windowMetaData]);
+		windowMetaData.component = <NotepadContent fileName={fileName} windowMetaData={windowMetaData} saveAsHandler={props.saveAsHandler} />;
+	}, [fileName, windowMetaData, props.saveAsHandler]);
 
 	function deleteNote() {
 		const noteKey = buildFileNameKey(fileName);
@@ -54,17 +59,18 @@ export default function NotepadIcon(props: NotepadIconProps) {
 			<WindowLauncherIcon
 				{...props}
 				windowMetaData={windowMetaData}
+				editingName={editingName === windowMetaData.id && windowMetaData.fileName !== "Edit Me"}
 				dropdownComponent={
 					props.rightClickDisabled ? (
 						<InertFileDropdown />
 					) : (
 						<ContextMenuContent className="border rounded-none">
 							<ContextMenuGroup>
-								<ContextMenuItem>
+								<ContextMenuItem onClick={() => handleSetNotepadClipBoard(windowMetaData, savedNotes)}>
 									Copy
 									<ContextMenuShortcut>⌘C</ContextMenuShortcut>
 								</ContextMenuItem>
-								<ContextMenuItem>
+								<ContextMenuItem disabled>
 									Cut
 									<ContextMenuShortcut>⌘X</ContextMenuShortcut>
 								</ContextMenuItem>

@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "../ui/dropdown-menu";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "../ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "../ui/dialog";
 import { RefObject, useState } from "react";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
@@ -10,7 +10,7 @@ import { WindowMetaData } from "@/lib/WindowMetaData";
 type RealMenuBarProps = {
 	items?: string[];
 	onSave?: () => void;
-	onSaveAs?: (newFileName: string) => void;
+	onSaveAs?: (newFileName: string) => boolean;
 	printTarget?: RefObject<HTMLDivElement | null>;
 	windowMetaData: WindowMetaData;
 };
@@ -21,7 +21,11 @@ export default function RealMenuBar({ items = defaultItems, onSave, onSaveAs, pr
 	const [newFileName, setNewFileName] = useState("");
 
 	function saveAsHandler() {
-		onSaveAs?.(newFileName);
+		const success = onSaveAs?.(newFileName);
+		if (!success) {
+			// Error handling is done in the parent component, so we just return early here
+			return;
+		}
 		setNewFileName("");
 		setIsSaveAsDialogOpen(false);
 	}
