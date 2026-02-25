@@ -146,7 +146,7 @@ function AlertDialogMedia({
 
 function AlertDialogAction({
   className,
-  variant = "default",
+  variant = "system",
   size = "default",
   ...props
 }: React.ComponentProps<typeof AlertDialogPrimitive.Action> &
@@ -164,7 +164,7 @@ function AlertDialogAction({
 
 function AlertDialogCancel({
   className,
-  variant = "outline",
+  variant = "system",
   size = "default",
   ...props
 }: React.ComponentProps<typeof AlertDialogPrimitive.Cancel> &
