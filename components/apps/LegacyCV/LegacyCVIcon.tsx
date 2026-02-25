@@ -6,7 +6,7 @@ export default function LegacyCVIcon() {
 	const imageUrl = `${envs.NEXT_PUBLIC_BASE_PATH}/app-icons/internet_explorer.png`;
 	const imageAlt = "Legacy CV Icon";
 	const imageTitle = "Legacy CV";
-	const label = "Legacy Website";
+	const label = "My Old Website";
 	return (
 		<div>
 			<div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 12 }}>
