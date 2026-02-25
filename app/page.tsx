@@ -47,7 +47,7 @@ export default function Home() {
 											src={`${envs.NEXT_PUBLIC_BASE_PATH}/glazed/me-square-glaze-protected-intensity-HIGH-V2.jpeg`}
 											alt="User Avatar"
 										/>
-										<AvatarFallback className="h-10 w-10 rounded-full bg-gray-200 text-gray-600 flex items-center justify-center">UF</AvatarFallback>
+										<AvatarFallback className="h-25 w-25 rounded-xs bg-gray-200 text-gray-600 flex items-center justify-center text-xl">FF</AvatarFallback>
 									</Link>
 								</Avatar>
 								<Link href="/portfolio" className="flex flex-col">
