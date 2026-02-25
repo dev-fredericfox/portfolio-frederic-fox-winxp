@@ -63,7 +63,7 @@ export default function AboutMeContent() {
 						</thead>
 						<tbody>
 							<tr>
-								<td className="hidden md:block px-2 py-1">2024–20{getThisYear({})}</td>
+								<td className="hidden md:block px-2 py-1">2024–{getThisYear({})}</td>
 								<td className="md:hidden px-2 py-1">&apos;24–&apos;{getThisYear({ short: true })}</td>
 								<td className="px-2 py-1">
 									<div className="flex flex-col">
@@ -75,7 +75,7 @@ export default function AboutMeContent() {
 							</tr>
 
 							<tr>
-								<td className="hidden md:block px-2 py-1">2021–20{getThisYear({})}</td>
+								<td className="hidden md:block px-2 py-1">2021–{getThisYear({})}</td>
 								<td className="md:hidden px-2 py-1">&apos;21–&apos;{getThisYear({ short: true })}</td>
 								<td className="px-2 py-1">
 									<div className="flex flex-col">
