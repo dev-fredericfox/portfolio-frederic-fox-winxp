@@ -2,13 +2,13 @@ import { DesktopIcon } from "@/components/atoms/DesktopIcon";
 import { useRef, useState } from "react";
 import { useWindowManager } from "@/components/context-providers/WindowManagerProvider";
 import { WindowMetaData } from "@/lib/WindowMetaData";
-import { EFIContent } from "./EFIContent";
+import { EFIContent } from "./EintrachtFrankfurtContent";
 
-export default function EFI() {
+export default function EintrachtFrankfurt() {
 	const { addWindow } = useWindowManager();
 	const [, setIsOpen] = useState(false);
 	const windowMetaData = new WindowMetaData({
-		name: "efi",
+		name: "eintrachtFrankfurt",
 		title: "Eintracht Frankfurt",
 		iconUrl: "https://upload.wikimedia.org/wikipedia/de/3/32/Logo_Eintracht_Frankfurt_1998.svg",
 		component: <EFIContent />,

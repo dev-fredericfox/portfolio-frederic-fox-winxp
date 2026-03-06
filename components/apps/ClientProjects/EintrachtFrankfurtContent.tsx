@@ -29,7 +29,7 @@ export function EFIContent() {
 
 				<div className="text-right">
 					<div className="inline-flex flex-col items-end gap-1">
-						<div className="text-[11px] tracking-wide">DOC ID: EFI-OPS-REPORT-001</div>
+						<div className="text-[11px] tracking-wide">DOC ID: EINTRACHT-OPS-REPORT-001</div>
 						<div className="relative">
 							<div
 								className="
@@ -55,11 +55,11 @@ export function EFIContent() {
 
 			<hr className="my-3 border-[#7F9DB9]" />
 			<div className="w-full text-right mb-4">
-				<p>Frankfur, Germany 2024 - Current</p>
+				<p>Frankfurt, Germany 2024 - Current</p>
 			</div>
 			{/* Notepad-style text body */}
 			<div className="whitespace-pre-wrap">
-				{`Eintracht Frankfurt Intelligence - Football Analysis and Internal Reporting
+				{`Eintracht Frankfurt - ********* CLASSIFIED REPORT *********
 ===============================
 
 CLIENT
@@ -69,11 +69,7 @@ During the 2024/2025 Bundesliga season, Eintracht Frankfurt secured a 3rd place 
 
 OVERVIEW
 --------
-Eintracht Frankfurt Intelligence (EFI) is an internal analysis and intelligence platform focused on video analysis,
-tactical, performance, and opposition analysis within professional football environments.
-
-The platform aggregates video, data, and written analysis into a unified workflow intended for analysts, coaches,
-and technical staff.
+Eintracht Frankfurt ****** classified app ******
 
 TECHNICAL STACK
 ---------------
@@ -84,11 +80,7 @@ TECHNICAL STACK
 
 CORE FEATURES
 -------------
-- Match and opponent breakdowns
-- Player-level video tagging and annotation
-- Tactical phase analysis (in-possession / out-of-possession)
-- Set-piece intelligence and pattern recognition
-- Historical match archive with searchable metadata
+- ?????
 
 NOTES
 -----
