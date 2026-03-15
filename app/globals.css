@@ -131,23 +131,6 @@
 	color: #ffffff;
 }
 
-@media print {
-	body {
-		visibility: hidden;
-	}
-	@page {
-		background: none;
-		background-image: none;
-		visibility: hidden;
-	}
-	.section-to-print {
-		visibility: visible !important;
-		position: absolute;
-		left: 0;
-		top: 0;
-	}
-}
-
 :root {
 	/* Scroll bar */
 	--scrollbar-bg: linear-gradient(90deg, rgba(197, 213, 255, 1) 0%, rgba(181, 211, 255, 1) 86%, rgba(182, 202, 247, 1) 100%);

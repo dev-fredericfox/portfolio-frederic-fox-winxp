@@ -1,0 +1,20 @@
+@media print {
+    /* 1. Only hide things if the body has this specific class */
+    body.is-os-layout {
+        visibility: hidden;
+    }
+    
+    /* 2. Cleaned up @page (removed visibility: hidden) */
+    @page {
+        background: none;
+        background-image: none;
+    }
+    
+    /* 3. Scope the section-to-print specifically to the OS layout */
+    body.is-os-layout .section-to-print {
+        visibility: visible !important;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+}

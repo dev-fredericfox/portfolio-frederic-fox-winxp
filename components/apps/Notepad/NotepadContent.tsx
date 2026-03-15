@@ -8,7 +8,7 @@ import { useWindowManager } from "@/components/context-providers/WindowManagerPr
 import { SavableWindowMetaData } from "@/lib/SavableWindowMetaData";
 import { SavedNotes } from "@/lib/shared-types";
 import Image from "next/image";
-import { signika } from "@/app/layout";
+import { signika } from "@/app/(Desktop)/layout";
 import { envs } from "@/lib/envs";
 
 type NotepadContentProps = {

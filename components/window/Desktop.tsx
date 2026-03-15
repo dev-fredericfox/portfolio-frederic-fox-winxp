@@ -2,7 +2,7 @@
 import ClientProjects from "@/components/apps/ClientProjects/ClientProjectsIcon";
 import WebampIcon from "@/components/apps/webamp/WebampIcon";
 import DesktopDropZone from "@/components/window/DesktopDropZone";
-import { JSX, use, useEffect, useMemo, useState } from "react";
+import { JSX, useMemo, useState } from "react";
 import WindowWrapper from "./WindowWrapper";
 import { DndContext, DragEndEvent, DragStartEvent } from "@dnd-kit/core";
 import { useWindowManager } from "../context-providers/WindowManagerProvider";
@@ -27,7 +27,6 @@ import {
 } from "@/components/ui/context-menu";
 import { useRouter } from "next/navigation";
 import { useHotkeys } from "react-hotkeys-hook";
-import { WindowMetaData } from "@/lib/WindowMetaData";
 import {
 	AlertDialog,
 	AlertDialogAction,
@@ -37,13 +36,15 @@ import {
 	AlertDialogHeader,
 	AlertDialogTitle,
 } from "../ui/alert-dialog";
-import { signika } from "@/app/layout";
+import { signika } from "@/app/(Desktop)/layout";
 import { envs } from "@/lib/envs";
 import { Button } from "../ui/button";
 import Image from "next/image";
 import { saveAs } from "@/lib/utils";
 import { SavableWindowMetaData } from "@/lib/SavableWindowMetaData";
 import { useClipBoard } from "../context-providers/ClipBoardProvider";
+import WyrdSoftwareIcon from "../apps/WyrdSoftware/WyrdSoftwareIcon";
+import ClassicCVIcon from "../apps/ClassicCV/ClassicCVIcon";
 
 type SavedNotes = Record<string, string>;
 
@@ -61,10 +62,12 @@ const DESKTOP_ICONS: DesktopIconType[] = [
 	{ name: "Read Me", icon: () => <ReadMeIcon placement="desktop" /> },
 	{ name: "Contact Me", icon: () => <ContactMeIcon placement="desktop" /> },
 	{ name: "Legacy CV", icon: () => <LegacyCVIcon /> },
+	{ name: "WyrdSoftware", icon: () => <WyrdSoftwareIcon /> },
 	{
 		name: "Notepad",
 		icon: ({ saveAsHandler }) => <NotepadIcon placement="desktop" fileName="Edit Me" rightClickDisabled saveAsHandler={saveAsHandler} />,
 	},
+	{ name: "Legacy CV", icon: () => <ClassicCVIcon /> },
 ];
 
 function convertNotePadSavesToIcons(savedNotes: SavedNotes): { name: string; icon: ({ saveAsHandler }: { saveAsHandler: SaveHandler }) => JSX.Element }[] {

@@ -36,7 +36,7 @@ export default function Home() {
 						</p>
 					</div>
 					<span className="h-0.5 w-full lg:h-full lg:w-0.5 mx-auto bg-linear-to-r lg:bg-linear-to-b via-white" />
-					<div className="flex items-center justify-center md:justify-start md:pr-10">
+					<div className="flex md:items-center justify-center md:justify-start md:pr-10">
 						{/* Vertical Gradient */}
 						<div className="flex flex-row items-center h-34.5 w-full bg-linear-to-r from-white via-white to-transparent rounded-bl-md rounded-tl-md p-px mx-4 md:mx-40 lg:mx-0">
 							<div className="flex md:flex-row items-top h-34 w-full bg-linear-to-r from-blue-800 via-blue-700 to-transparent rounded-bl-md rounded-tl-md p-4">

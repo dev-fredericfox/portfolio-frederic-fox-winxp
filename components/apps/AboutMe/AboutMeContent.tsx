@@ -1,8 +1,9 @@
 import BorderGroup from "@/components/atoms/BorderGroup";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { envs } from "@/lib/envs";
-import { Link2Icon, MapPinIcon } from "lucide-react";
+import { Link2Icon, MapPinIcon, PrinterIcon } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 export default function AboutMeContent() {
 	return (
 		<div className="w-full overflow-x-auto">
@@ -23,14 +24,20 @@ export default function AboutMeContent() {
 					<p>Frederic Fox</p>
 					<p>Software Developer</p>
 					<p>
-						<MapPinIcon size={14} className="inline-block mb-1" />
+						<MapPinIcon size={14} className="inline-block mb-1 mr-1" />
 						Freiburg, Germany
 					</p>
 					<p>
 						<Link2Icon size={14} className="inline-block mb-1 mr-1" />
-						<a href="https://www.linkedin.com/in/foxfrederic" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">
+						<Link href="https://www.linkedin.com/in/foxfrederic" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">
 							https://www.linkedin.com/in/foxfrederic
-						</a>
+						</Link>
+					</p>
+					<p>
+						<PrinterIcon size={14} className="inline-block mb-1 mr-1" />
+						<Link href="/resume" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">
+							Resume Printout
+						</Link>
 					</p>
 					<p className="mt-3">English - German - French</p>
 				</div>
@@ -63,12 +70,12 @@ export default function AboutMeContent() {
 						</thead>
 						<tbody>
 							<tr>
-								<td className="hidden md:block px-2 py-1">2024–{getThisYear({})}</td>
-								<td className="md:hidden px-2 py-1">&apos;24–&apos;{getThisYear({ short: true })}</td>
+								<td className="hidden md:block px-2 py-1">2025–{getThisYear({})}</td>
+								<td className="md:hidden px-2 py-1">&apos;25–&apos;{getThisYear({ short: true })}</td>
 								<td className="px-2 py-1">
 									<div className="flex flex-col">
-										<span>Founder — W*** (Stealth)</span>
-										<span>Indie Gaming Studio</span>
+										<span>Founder — WyrdSoftware (Stealth)</span>
+										<span>Self funded Indie Gaming Studio</span>
 									</div>
 								</td>
 								<td className="px-2 py-1 text-nowrap">--</td>
@@ -81,7 +88,7 @@ export default function AboutMeContent() {
 									<div className="flex flex-col">
 										<span>Freelance Software Developer</span>
 										<span>
-											<strong>Clients</strong>: Top football clubs, finance, retail
+											<strong>Projects</strong>: Top football clubs, finance, retail
 										</span>
 									</div>
 								</td>
