@@ -149,6 +149,7 @@ export default function AboutMeContent() {
 							<li>React Native</li>
 							<li>Next.js</li>
 							<li>Node.js</li>
+							<li>Docker</li>
 							<li>Express.js</li>
 							<li>Tailwind CSS</li>
 							<li>Unreal Engine</li>

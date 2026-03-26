@@ -104,16 +104,23 @@ export default function ResumePage() {
 									</p>
 									<div className="flex flex-row gap-2 mt-1 print:gap-0.75 flex-wrap">
 										<p className="text-sm text-slate-700 leading-relaxed">Projects:</p>
-										{["Blizzard: Hearthstone", "CD Projekt Red: The Witcher", "Square Enix: Final Fantasy XIV, Deus Ex", "King: Candy Crush", "Dr. Wolff-Gruppe: Kinder Karex", "Casavo", "Gremco", "Berliner Philharmoniker"].map(
-											(skill) => (
-												<Badge
-													key={skill}
-													variant="secondary"
-													className="font-medium bg-slate-100 text-slate-700 hover:bg-slate-200 print:border print:border-slate-300 print:bg-transparent">
-													{skill}
-												</Badge>
-											),
-										)}
+										{[
+											"Blizzard: Hearthstone",
+											"CD Projekt Red: The Witcher",
+											"Square Enix: Final Fantasy XIV, Deus Ex",
+											"King: Candy Crush",
+											"Dr. Wolff-Gruppe: Kinder Karex",
+											"Casavo",
+											"Gremco",
+											"Berliner Philharmoniker",
+										].map((skill) => (
+											<Badge
+												key={skill}
+												variant="secondary"
+												className="font-medium bg-slate-100 text-slate-700 hover:bg-slate-200 print:border print:border-slate-300 print:bg-transparent">
+												{skill}
+											</Badge>
+										))}
 									</div>
 								</div>
 							</div>
@@ -126,7 +133,21 @@ export default function ResumePage() {
 						<section className="break-inside-avoid">
 							<h3 className="text-lg font-semibold text-slate-900 mb-3 print:mb-1">Core Skills</h3>
 							<div className="flex flex-wrap gap-2 print:gap-0.75">
-								{["TypeScript", "React", "Next", "Node", "Express", "MongoDB", "Jest", "PayloadCMS", "C++", "Unreal Engine", "CI/CD"].map((skill) => (
+								{[
+									"TypeScript",
+									"React",
+									"Next",
+									"Node",
+									"Docker",
+									"React Native",
+									"Express",
+									"MongoDB",
+									"Jest",
+									"PayloadCMS",
+									"C++",
+									"Unreal Engine",
+									"CI/CD",
+								].map((skill) => (
 									<Badge
 										key={skill}
 										variant="secondary"
