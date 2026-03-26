@@ -13,7 +13,7 @@ export default function ResumePage() {
 					<div>
 						<h1 className="text-4xl font-bold tracking-tight text-slate-900 print:text-2xl">Frederic Fox</h1>
 						<h2 className="text-xl font-medium text-slate-600 mt-1">Full Stack TypeScript Developer</h2>
-						<p className="text-sm text-slate-500 max-w-2xl mt-4">
+						<p className="text-sm text-slate-500 max-w-2xl mt-4 leading-snug">
 							Full Stack Developer combining deep technical expertise in the MERN stack with a proven track record as an entrepreneurial founder. Specializing
 							in robust API design and scalable web applications, with a personal passion for C++ and Unreal Engine.
 						</p>
@@ -24,7 +24,7 @@ export default function ResumePage() {
 							<Globe className="h-4 w-4" /> frederic-fox.com
 						</a>
 						<span className="flex items-center gap-2">
-							<MapPin className="h-4 w-4" /> Frankfurt / Remote
+							<MapPin className="h-4 w-4" /> Lörrach / Remote
 						</span>
 						<span className="flex items-center gap-2 whitespace-nowrap">
 							<Languages className="h-4 w-4" />
@@ -37,7 +37,7 @@ export default function ResumePage() {
 					{/* Main Content Column (2/3 width) */}
 					<div className="md:col-span-2 space-y-6 print:space-y-2">
 						<section>
-							<h3 className="text-lg font-semibold text-slate-900 mb-3">Experience</h3>
+							<h3 className="text-lg font-semibold text-slate-900 mb-3 print:mb-1">Experience</h3>
 							<div className="space-y-5 print:space-y-2">
 								{/* Role 1 */}
 								<div className="break-inside-avoid">
@@ -46,7 +46,7 @@ export default function ResumePage() {
 										<span className="text-xs text-slate-500 font-medium whitespace-nowrap">Aug 2023 - Present</span>
 									</div>
 									<p className="text-sm text-slate-600 mb-2">Remote · Frankfurt Rhine-Main Area</p>
-									<p className="text-sm text-slate-700 leading-relaxed">
+									<p className="text-sm text-slate-700 leading-snug">
 										Architecting and developing custom full-stack solutions for diverse clients using modern web technologies including TypeScript, React,
 										Next.js, Node.js, Express, MongoDB, PayloadCMS, and Strapi.
 									</p>
@@ -86,7 +86,7 @@ export default function ResumePage() {
 										<span className="text-xs text-slate-500 font-medium">Nov 2018 - Jan 2023</span>
 									</div>
 									<p className="text-sm text-slate-600 mb-2">BF International Foods GmbH (Krakenkind) · Freiburg, Germany</p>
-									<p className="text-sm text-slate-700 leading-relaxed">
+									<p className="text-sm text-slate-700 leading-snug">
 										Founded and scaled an e-commerce brand distributing international snacks. Architected the digital storefront, achieving a 4.9★ customer
 										satisfaction score across 300+ reviews while handling all technical and operational logistics.
 									</p>
@@ -99,7 +99,7 @@ export default function ResumePage() {
 										<span className="text-xs text-slate-500 font-medium">Jan 2015 - Dec 2019</span>
 									</div>
 									<p className="text-sm text-slate-600 mb-2">Traffic Hunter GmbH · Berlin Area, Germany</p>
-									<p className="text-sm text-slate-700 leading-relaxed">
+									<p className="text-sm text-slate-700 leading-snug">
 										Led a performance marketing agency specializing in gaming and entertainment. Directed data-driven campaigns for top-tier clients.
 									</p>
 									<div className="flex flex-row gap-2 mt-1 print:gap-0.75 flex-wrap">
